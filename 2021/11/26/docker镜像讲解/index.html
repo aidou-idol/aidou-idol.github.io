@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+    
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    
+    <meta name="renderer" content="webkit"/>
+    <meta name="force-rendering" content="webkit"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <script>if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMode)) window.location.href="https://support.dmeng.net/upgrade-your-browser.html?referrer="+encodeURIComponent(window.location.href); </script>
+    
+    
+        <link rel="preload" crossorigin="crossorigin" href="/fonts/roboto/Roboto-Regular.woff2" as="font">
+        <link rel="preload" crossorigin="crossorigin" href="/fonts/roboto/Roboto-Bold.woff2" as="font">
+    
+    
+    
+        <link rel="shortcut icon" href="/icons/favicon.ico">
+    
+
+    
+    
+        
+<link rel="stylesheet" href="/css/mdui.min.v1.0.0.css">
+
+    
+    
+<link rel="stylesheet" href="/css/main.css">
+<link rel="stylesheet" href="/css/iconfont.css">
+
+
+    
+    
+
+    
+        <script data-ad-client="ca-" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+          
+
+
+    
+    
+    <title>
+        
+            docker镜像讲解 | 艾豆Weblog
+        
+    </title>
+    
+    
+<meta name="generator" content="Hexo 5.4.0"></head>
+<body class="mdui-drawer-body-left mdui-appbar-with-toolbar mdui-theme-primary-cyan mdui-theme-accent-pink">
+  
+  <header class="mdui-appbar mdui-appbar-fixed">
+  <div id="toolbar" class="mdui-toolbar mdui-color-theme">
+    <button class="mdui-btn mdui-btn-icon" mdui-drawer="{target: '#sidebar', swipe: true}"><i class="iconfont icon-menu"></i></button>
+    <a href="/" class="mdui-typo-headline">艾豆Weblog</a>
+    <a href="/" class="header-subtitle mdui-typo-headline"></a>
+    <div class="mdui-toolbar-spacer"></div>
+    <button class="mdui-btn mdui-btn-icon" mdui-dialog="{target: '#search'}" mdui-tooltip="{content: 'search'}"><i class="iconfont icon-search"></i></button>
+  </div>
+</header>
+
+<div class="mdui-dialog" id="search">
+  
+    <div class="search-form">
+      <input type="search" class="search-form-input" placeholder="请输入关键字" onfocus="listenSearchFunc()">
+    </div>
+    <div class="search-result" data-resource="/search.xml"></div>
+  
+</div>
+
+  <aside id="sidebar" class="mdui-drawer">
+    <div class="mdui-tab" mdui-tab>
+        <a href="#sidebar-tab1" id="sidebartab" class="mdui-ripple mdui-tab-active">站点概览</a>
+        <a href="#sidebar-tab2" id="sidebartab" class="mdui-ripple">关于</a>
+    </div>
+
+    
+    <div id="sidebar-tab1" class="mdui-p-a-1">
+        <div class="mdui-list">
+            
+                
+                <a href="/" class="mdui-list-item mdui-ripple">
+                    <div class="mdui-list-item-icon">
+                        <i class="iconfont icon-home"></i>
+                    </div>
+                    <div class="mdui-list-item-content">主页</div>
+                </a>
+            
+                
+                <a href="/tags/" class="mdui-list-item mdui-ripple">
+                    <div class="mdui-list-item-icon">
+                        <i class="iconfont icon-bookmark"></i>
+                    </div>
+                    <div class="mdui-list-item-content">标签</div>
+                </a>
+            
+                
+                <a href="/categories/" class="mdui-list-item mdui-ripple">
+                    <div class="mdui-list-item-icon">
+                        <i class="iconfont icon-folder"></i>
+                    </div>
+                    <div class="mdui-list-item-content">分类</div>
+                </a>
+            
+                
+                <a href="/archives/" class="mdui-list-item mdui-ripple">
+                    <div class="mdui-list-item-icon">
+                        <i class="iconfont icon-archive"></i>
+                    </div>
+                    <div class="mdui-list-item-content">归档</div>
+                </a>
+            
+                
+                <a href="/tools/" class="mdui-list-item mdui-ripple">
+                    <div class="mdui-list-item-icon">
+                        <i class="iconfont icon-tools"></i>
+                    </div>
+                    <div class="mdui-list-item-content">工具箱</div>
+                </a>
+            
+                
+                <a href="/about/" class="mdui-list-item mdui-ripple">
+                    <div class="mdui-list-item-icon">
+                        <i class="iconfont icon-user"></i>
+                    </div>
+                    <div class="mdui-list-item-content">关于</div>
+                </a>
+            
+            <div class="mdui-list-item mdui-ripple">
+                <div class="mdui-list-item-icon">
+                    <i class="iconfont icon-moon"></i>
+                </div>
+                <div class="mdui-list-item-content">夜间模式</div>
+                <label class="mdui-switch" id="darkmode">
+                  <input type="checkbox" id="nightmode_switch"/>
+                  <i class="mdui-switch-icon"></i>
+                </label>
+            </div>           
+        </div>
+    </div>
+
+    
+    <div id="sidebar-tab2" class="mdui-p-a-1">
+        <div class="sidebar-overview">
+            <div class="sidebar-avatar">
+                
+                    <img src="/icons/avatar.gif"/>
+                
+            </div>
+            <div class="sidebar-author-name">Aidou-idol</div>
+            <div class="sidebar-description">境界很高的人，周围没有志同道合的伙伴，也没有情投意合的知音，宁愿不说，但不是孤独，只是圈子不合不必强融。</div>
+        </div>
+        <div class="sidebar-links">
+            
+                
+                <div class="mdui-chip">
+                    <span class="mdui-chip-icon"><i class="iconfont icon-mail"></i></span>
+                    <a href="mailto:xxx@xxx.com" class="mdui-chip-title">E-Mail</a>
+                </div>
+            
+                
+                <div class="mdui-chip">
+                    <span class="mdui-chip-icon"><i class="iconfont icon-github"></i></span>
+                    <a target="_blank" rel="noopener" href="https://your.url" class="mdui-chip-title">GitHub</a>
+                </div>
+            
+                
+                <div class="mdui-chip">
+                    <span class="mdui-chip-icon"><i class="iconfont icon-steam"></i></span>
+                    <a target="_blank" rel="noopener" href="https://your.url" class="mdui-chip-title">Steam</a>
+                </div>
+            
+                
+                <div class="mdui-chip">
+                    <span class="mdui-chip-icon"><i class="iconfont icon-weibo"></i></span>
+                    <a target="_blank" rel="noopener" href="https://your.url" class="mdui-chip-title">Weibo</a>
+                </div>
+            
+        </div>
+        <ul class="mdui-list" mdui-collapse="{accordion: true}">
+            <li class="mdui-collapse-item">
+                <div class="mdui-collapse-item-header mdui-list-item mdui-ripple">
+                    <div class="mdui-list-item-icon">
+                        <i class="iconfont icon-link"></i>
+                    </div>
+                    <div class="mdui-list-item-content">友情链接</div>
+                    <div class="mdui-collapse-item-arrow">
+                        <i class="mdui-list-item-icon iconfont icon-angle-down"></i>
+                    </div>
+                </div>
+                <ul id="linksList" class="mdui-collapse-item-body mdui-list mdui-list-dense">
+                    
+                        <a target="_blank" rel="noopener" href="https://blog.csdn.net/Lloveyy" class="mdui-list-item mdui-ripple">
+                            csdn链接
+                        </a>
+                    
+                </ul>
+            </li>
+        </ul>
+    </div>
+
+    <div class="mdui-divider"></div>
+    
+    
+</aside>
+  
+  <main id="main-contain" class="mdui-container mdui-m-t-5">
+    <article id="article" class="mdui-card mdui-p-b-2 mdui-m-b-5">
+  <header class="mdui-card-media">
+    
+    
+      <div class="post-header"> 
+  <a class="post-header-title" href="/2021/11/26/docker%E9%95%9C%E5%83%8F%E8%AE%B2%E8%A7%A3/">docker镜像讲解</a>
+  <div class="post-header-meta">
+    <span>
+      <span class="iconfont icon-calendar"></span>
+      发布于:&nbsp;2021-11-26
+    </span>
+    <span>
+      <span class="iconfont icon-calendar-check"></span>
+      更新于:&nbsp;2021-12-09
+    </span>
+    <span>
+      <span class="iconfont icon-folder"></span>
+      分类于:&nbsp;<a class="category-link" href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%B1%82%E8%99%9A%E6%8B%9F%E5%8C%96/">操作系统层虚拟化</a>
+    </span>
+    
+      <span>
+        <span class="iconfont icon-eye"></span>
+        阅读次数:&nbsp;
+        <span id="busuanzi_container_page_pv"><span id="busuanzi_value_page_pv"></span></span>
+      </span>
+    
+  </div>
+</div>   
+    
+
+
+
+    
+    
+    <div class="mdui-card-menu">
+    
+      <button class="mdui-btn mdui-btn-icon mdui-text-color-cyan" mdui-menu="{target: '#share_menu', align: 'right'}"><i class="iconfont icon-share"></i></button>
+      <ul class="mdui-menu" id="share_menu">
+        <li class="mdui-menu-item">
+          <a href="http://service.weibo.com/share/share.php?appkey=&title=docker镜像讲解&url=http://example.com/2021/11/26/docker%E9%95%9C%E5%83%8F%E8%AE%B2%E8%A7%A3/&pic=http://example.com/null&searchPic=false&style=simple" target="_blank" class="mdui-ripple">分享到 Weibo</a>
+        </li>
+        <li class="mdui-menu-item">
+          <a href="https://twitter.com/intent/tweet?text=docker镜像讲解&url=http://example.com/2021/11/26/docker%E9%95%9C%E5%83%8F%E8%AE%B2%E8%A7%A3/&via=Aidou-idol" target="_blank" class="mdui-ripple">分享到 Twitter</a>
+        </li>
+        <li class="mdui-menu-item">
+          <a href="https://www.facebook.com/sharer/sharer.php?u=http://example.com/2021/11/26/docker%E9%95%9C%E5%83%8F%E8%AE%B2%E8%A7%A3/" target="_blank" class="mdui-ripple">分享到 Facebook</a>
+        </li>
+        <li class="mdui-menu-item">
+          <a href="https://plus.google.com/share?url=http://example.com/2021/11/26/docker%E9%95%9C%E5%83%8F%E8%AE%B2%E8%A7%A3/" target="_blank" class="mdui-ripple">分享到 Google+</a>
+        </li>
+        <li class="mdui-menu-item">
+          <a href="https://www.linkedin.com/shareArticle?mini=true&url=http://example.com/2021/11/26/docker%E9%95%9C%E5%83%8F%E8%AE%B2%E8%A7%A3/&title=docker镜像讲解" target="_blank" class="mdui-ripple">分享到 LinkedIn</a>
+        </li>
+        <li class="mdui-menu-item">
+          <a href="http://connect.qq.com/widget/shareqq/index.html?site=艾豆Weblog&title=docker镜像讲解&summary=境界很高的人，周围没有志同道合的伙伴，也没有情投意合的知音，宁愿不说，但不是孤独，只是圈子不合不必强融。&pics=http://example.com/null&url=http://example.com/2021/11/26/docker%E9%95%9C%E5%83%8F%E8%AE%B2%E8%A7%A3/" target="_blank" class="mdui-ripple">分享到 QQ</a>
+        </li>
+        <li class="mdui-menu-item">
+          <a href="https://telegram.me/share/url?url=http://example.com/2021/11/26/docker%E9%95%9C%E5%83%8F%E8%AE%B2%E8%A7%A3/&text=docker镜像讲解" target="_blank" class="mdui-ripple">分享到 Telegram</a>
+        </li>
+      </ul>
+    
+  </div>
+  </header>
+  
+  
+  
+  
+  <div class="post-tags">
+    
+      <i class="iconfont icon-tag">
+        <a rel="tag" href = /tags/%E5%BA%94%E7%94%A8%E5%AE%B9%E5%99%A8%E5%BC%95%E6%93%8E/ >应用容器引擎</a>
+      </i>
+    
+  </div>
+
+  
+  <div class="mdui-card-content mdui-typo mdui-p-x-4">
+    <h3>镜像是什么？</h3>
+
+<p>镜像是一种轻量级、可执行的独立软件包，用来打包软件运行环境和基于运行环境开发的软件，它包含运行某个软件所需的所有内容，包括代码、运行时、库、环境变量和配置文件。</p>
+<p>所有的应用，直接打包docker镜像，就可以直接跑起来。</p>
+<p><strong>如何得到镜像?</strong></p>
+<p>1、从远程仓库下载</p>
+<p>2、朋友拷贝给你</p>
+<p>3、自己制作一个镜像DockerFile</p>
+<hr>
+<h3>docker镜像加载原理?</h3>
+
+<p>UnionFS（联合文件系统）：Union文件系统（UnionFS）是一种分层、轻量级并且高性能的文件系统，它支持对文件系统的修改作为一次提交来一层层的叠加，同时可以将不同目录挂载到同一个虚拟文件系统下（unite several directories into a single virtual filesystem）。Union文件系统是Docker镜像的基础。镜像可以通过分层来进行继承，基于基础镜像（没有父镜像），可以制作各种具体的应用镜像。</p>
+<p>特性：一次同时加载多个文件系统，但从外面看起来，只能看到一个文件系统，联合加载会把文件系统及叠加起来，这样最终的文件系统包含所有底层的文件和目录</p>
+<p><strong>Dcoker镜像加载原理</strong></p>
+<p>docker的镜像实际上由一层一层的文件系统组成，这种层级的文件系统UnionFS。</p>
+<p>bootfs（boot file system）主要包含bootloader和kernel，bootloader主要是引导加载kernel，Linux刚启动时会加载bootfs文件系统，在Docker镜像的最底层是bootfs。这一层与我们电箱的Linux/Unix系统是一样的，包含boot加载器和内核。当boot加载完成之后整个内核就都在内存中了，此时内存的使用权已由bootfs转交给内核，此时系统也会卸载bootfs。</p>
+<p>rootfs（root file system），在bootfs之上。包含的就是典型Linux 系统中的 /dev，/proc，/bin，/etc 等标准目录和文件。rootfs就是各种不同的操作系统发行版，比如Ubuntu，Centos等</p>
+<p><img src="https://note.youdao.com/yws/api/personal/file/1307B9687AE348399E5612DB9F6E80CB?method=download&shareKey=1c8ae96c456a918eb40ae24e771f2c82"></p>
+<hr>
+<p>平时我们安装进虚拟机的CentOS都是好几个G，为什么Docker这里才231M？</p>
+<p>对于个精简的OS,rootfs可以很小，只需要包合最基本的命令，工具和程序库就可以了，因为底层直接用Host的kernel，自己只需要提供rootfs就可以了。由此可见对于不同的Linux发行版， boots基本是一致的， rootfs会有差別，因此不同的发行版可以公用bootfs。</p>
+<h3>分层理解</h3>
+
+<p>下载一个镜像，注意观察下载的日志输出，可以看到是一层层的在下载。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">[root@iZ2zehf73q4a84x826efj3Z ~]# docker pull redis</span><br><span class="line">Using default tag: latest</span><br><span class="line">latest: Pulling from library/redis</span><br><span class="line">eff15d958d66: Already exists </span><br><span class="line">1aca8391092b: Pull complete </span><br><span class="line">06e460b3ba1b: Pull complete </span><br><span class="line">def49df025c0: Pull complete </span><br><span class="line">646c72a19e83: Pull complete </span><br><span class="line">db2c789841df: Pull complete </span><br><span class="line">Digest: sha256:619af14d3a95c30759a1978da1b2ce375504f1af70ff9eea2a8e35febc45d747</span><br><span class="line">Status: Downloaded newer image for redis:latest</span><br><span class="line">docker.io/library/redis:latest</span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>为什么Docker镜像要采用这种分层的结构呢？</strong></p>
+<p>最大的好处，我觉得莫过于资源共享了！比如有多个镜像都从相同的Base镜像构建而来，那么宿主机只需在磁盘上保留一份base镜像，同时内存中也只需要加载一份base镜像，这样就可以为所有的容器服务了，而且镜像的每一层都可以被共享。</p>
+<p>通过docker image inspect 命令查看镜像分层</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br></pre></td><td class="code"><pre><span class="line">[root@iZ2zehf73q4a84x826efj3Z ~]# docker image inspect redis:latest</span><br><span class="line">[</span><br><span class="line">    &#123;</span><br><span class="line">        &quot;Id&quot;: &quot;sha256:40c68ed3a4d246b2dd6e59d1b05513accbd2070efb746ec16848adc1b8e07fd4&quot;,</span><br><span class="line">        &quot;RepoTags&quot;: [</span><br><span class="line">            &quot;redis:latest&quot;</span><br><span class="line">        ],</span><br><span class="line">        &quot;RepoDigests&quot;: [</span><br><span class="line">            &quot;redis@sha256:619af14d3a95c30759a1978da1b2ce375504f1af70ff9eea2a8e35febc45d747&quot;</span><br><span class="line">        ],</span><br><span class="line">        &quot;Parent&quot;: &quot;&quot;,</span><br><span class="line">        &quot;Comment&quot;: &quot;&quot;,</span><br><span class="line">        &quot;Created&quot;: &quot;2021-11-17T23:55:32.992203883Z&quot;,</span><br><span class="line">        &quot;Container&quot;: &quot;204dce7042f7d9b9ddfe3166f1fb31ab9e6796e9f85a61add0d162fa1b2af1d5&quot;,</span><br><span class="line">        &quot;ContainerConfig&quot;: &#123;</span><br><span class="line">            &quot;Hostname&quot;: &quot;204dce7042f7&quot;,</span><br><span class="line">            &quot;Domainname&quot;: &quot;&quot;,</span><br><span class="line">            &quot;User&quot;: &quot;&quot;,</span><br><span class="line">            &quot;AttachStdin&quot;: false,</span><br><span class="line">            &quot;AttachStdout&quot;: false,</span><br><span class="line">            &quot;AttachStderr&quot;: false,</span><br><span class="line">            &quot;ExposedPorts&quot;: &#123;</span><br><span class="line">                &quot;6379/tcp&quot;: &#123;&#125;</span><br><span class="line">            &#125;,</span><br><span class="line">            &quot;Tty&quot;: false,</span><br><span class="line">            &quot;OpenStdin&quot;: false,</span><br><span class="line">            &quot;StdinOnce&quot;: false,</span><br><span class="line">            &quot;Env&quot;: [</span><br><span class="line">                &quot;PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin&quot;,</span><br><span class="line">                &quot;GOSU_VERSION=1.12&quot;,</span><br><span class="line">                &quot;REDIS_VERSION=6.2.6&quot;,</span><br><span class="line">                &quot;REDIS_DOWNLOAD_URL=http://download.redis.io/releases/redis-6.2.6.tar.gz&quot;,</span><br><span class="line">                &quot;REDIS_DOWNLOAD_SHA=5b2b8b7a50111ef395bf1c1d5be11e6e167ac018125055daa8b5c2317ae131ab&quot;</span><br><span class="line">            ],</span><br><span class="line">            &quot;Cmd&quot;: [</span><br><span class="line">                &quot;/bin/sh&quot;,</span><br><span class="line">                &quot;-c&quot;,</span><br><span class="line">                &quot;#(nop) &quot;,</span><br><span class="line">                &quot;CMD [\&quot;redis-server\&quot;]&quot;</span><br><span class="line">            ],</span><br><span class="line">            &quot;Image&quot;: &quot;sha256:f68fe14ac3ec56717680e0a1e8562ba7ec42aabcc9626615012304e2f18c5a84&quot;,</span><br><span class="line">            &quot;Volumes&quot;: &#123;</span><br><span class="line">                &quot;/data&quot;: &#123;&#125;</span><br><span class="line">            &#125;,</span><br><span class="line">            &quot;WorkingDir&quot;: &quot;/data&quot;,</span><br><span class="line">            &quot;Entrypoint&quot;: [</span><br><span class="line">                &quot;docker-entrypoint.sh&quot;</span><br><span class="line">            ],</span><br><span class="line">            &quot;OnBuild&quot;: null,</span><br><span class="line">            &quot;Labels&quot;: &#123;&#125;</span><br><span class="line">        &#125;,</span><br><span class="line">        &quot;DockerVersion&quot;: &quot;20.10.7&quot;,</span><br><span class="line">        &quot;Author&quot;: &quot;&quot;,</span><br><span class="line">        &quot;Config&quot;: &#123;</span><br><span class="line">            &quot;Hostname&quot;: &quot;&quot;,</span><br><span class="line">            &quot;Domainname&quot;: &quot;&quot;,</span><br><span class="line">            &quot;User&quot;: &quot;&quot;,</span><br><span class="line">            &quot;AttachStdin&quot;: false,</span><br><span class="line">            &quot;AttachStdout&quot;: false,</span><br><span class="line">            &quot;AttachStderr&quot;: false,</span><br><span class="line">            &quot;ExposedPorts&quot;: &#123;</span><br><span class="line">                &quot;6379/tcp&quot;: &#123;&#125;</span><br><span class="line">            &#125;,</span><br><span class="line">            &quot;Tty&quot;: false,</span><br><span class="line">            &quot;OpenStdin&quot;: false,</span><br><span class="line">            &quot;StdinOnce&quot;: false,</span><br><span class="line">            &quot;Env&quot;: [</span><br><span class="line">                &quot;PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin&quot;,</span><br><span class="line">                &quot;GOSU_VERSION=1.12&quot;,</span><br><span class="line">                &quot;REDIS_VERSION=6.2.6&quot;,</span><br><span class="line">                &quot;REDIS_DOWNLOAD_URL=http://download.redis.io/releases/redis-6.2.6.tar.gz&quot;,</span><br><span class="line">                &quot;REDIS_DOWNLOAD_SHA=5b2b8b7a50111ef395bf1c1d5be11e6e167ac018125055daa8b5c2317ae131ab&quot;</span><br><span class="line">            ],</span><br><span class="line">            &quot;Cmd&quot;: [</span><br><span class="line">                &quot;redis-server&quot;</span><br><span class="line">            ],</span><br><span class="line">            &quot;Image&quot;: &quot;sha256:f68fe14ac3ec56717680e0a1e8562ba7ec42aabcc9626615012304e2f18c5a84&quot;,</span><br><span class="line">            &quot;Volumes&quot;: &#123;</span><br><span class="line">                &quot;/data&quot;: &#123;&#125;</span><br><span class="line">            &#125;,</span><br><span class="line">            &quot;WorkingDir&quot;: &quot;/data&quot;,</span><br><span class="line">            &quot;Entrypoint&quot;: [</span><br><span class="line">                &quot;docker-entrypoint.sh&quot;</span><br><span class="line">            ],</span><br><span class="line">            &quot;OnBuild&quot;: null,</span><br><span class="line">            &quot;Labels&quot;: null</span><br><span class="line">        &#125;,</span><br><span class="line">        &quot;Architecture&quot;: &quot;amd64&quot;,</span><br><span class="line">        &quot;Os&quot;: &quot;linux&quot;,</span><br><span class="line">        &quot;Size&quot;: 112713219,</span><br><span class="line">        &quot;VirtualSize&quot;: 112713219,</span><br><span class="line">        &quot;GraphDriver&quot;: &#123;</span><br><span class="line">            &quot;Data&quot;: &#123;</span><br><span class="line">                &quot;LowerDir&quot;: &quot;/var/lib/docker/overlay2/d9b5012331ae6e0229e209c05974f75112c0664b54ddaf668c230305bc5da03f/diff:/var/lib/docker/overlay2/db033b72a011cce6f105380eb451e830af1957eaa554912616e3a5219645aaa3/diff:/var/lib/docker/overlay2/c0a78a2d75f7d78c0d3c60e2595c9d9d992ff6f43df2cbe0eb153dd1f40078e5/diff:/var/lib/docker/overlay2/036c1f2c75d27bd5fb6cf0d0f1be53f70db8c71d232208ba4caf07ad73f50688/diff:/var/lib/docker/overlay2/424d63f473c519666d9a417b16b3e6c7fc738994d8ca5fefdbdd60d6f7300314/diff&quot;,</span><br><span class="line">                &quot;MergedDir&quot;: &quot;/var/lib/docker/overlay2/286ff4e03fda0c04b962631eccf9ac9875f3e287b35afb042dd96bb7fe0b0868/merged&quot;,</span><br><span class="line">                &quot;UpperDir&quot;: &quot;/var/lib/docker/overlay2/286ff4e03fda0c04b962631eccf9ac9875f3e287b35afb042dd96bb7fe0b0868/diff&quot;,</span><br><span class="line">                &quot;WorkDir&quot;: &quot;/var/lib/docker/overlay2/286ff4e03fda0c04b962631eccf9ac9875f3e287b35afb042dd96bb7fe0b0868/work&quot;</span><br><span class="line">            &#125;,</span><br><span class="line">            &quot;Name&quot;: &quot;overlay2&quot;</span><br><span class="line">        &#125;,</span><br><span class="line">        &quot;RootFS&quot;: &#123;</span><br><span class="line">            &quot;Type&quot;: &quot;layers&quot;,</span><br><span class="line">            &quot;Layers&quot;: [</span><br><span class="line">                &quot;sha256:e1bbcf243d0e7387fbfe5116a485426f90d3ddeb0b1738dca4e3502b6743b325&quot;,</span><br><span class="line">                &quot;sha256:58e6a16139eebebf7f6f0cb15f9cb3c2a4553a062d2cbfd1a782925452ead433&quot;,</span><br><span class="line">                &quot;sha256:503a5c57d9786921c992b7b2216ae58f69dcf433eedb28719ddea3606b42ce26&quot;,</span><br><span class="line">                &quot;sha256:277199a0027e044f64ef3719a6d7c3842e99319d6e0261c3a5190249e55646cf&quot;,</span><br><span class="line">                &quot;sha256:d0d567a1257963b9655dfceaddc76203c8544fbf6c8672b372561a3c8a3143d4&quot;,</span><br><span class="line">                &quot;sha256:a7115aa098139866d7073846e4321bafb8d5ca0d0f907a3c9625f877311bee7c&quot;</span><br><span class="line">            ]</span><br><span class="line">        &#125;,</span><br><span class="line">        &quot;Metadata&quot;: &#123;</span><br><span class="line">            &quot;LastTagTime&quot;: &quot;0001-01-01T00:00:00Z&quot;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">]</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<p>所有的docker镜像都起始于一个基础镜像层，当进行修改或者增加新的内容时，就会在当前镜像层之上，创建新的镜像层。</p>
+<p>举一个简单的例子，加入基于Ubuntu Linux 16.04创建一个新的镜像，这就是新镜像的第一层；如果在该镜像中添加Python包，就会在基础镜像层之上穿件第二个镜像层；如果继续添加一个安全补丁，就会创建第三个镜像层。</p>
+<p>该镜像当前已经包含3个镜像层，如下图（这只是一个用于演示的很简单的例子）。</p>
+<p><img src="https://note.youdao.com/yws/api/personal/file/B81278B7BE294FE59B79A3119D32F936?method=download&shareKey=a232c536dfc3c0fa540121a13ced7264"></p>
+<p>在添加额外的镜像层的同时，镜像始终是保持当前所有镜像的组合，理解这一点非常重要。下图中举了一个简单的例子，每个镜像层包含3个文件，而镜像层包含了来自两镜像层的6个文件。</p>
+<p><img src="https://note.youdao.com/yws/api/personal/file/D10298C670354943AE55FBA54939536C?method=download&shareKey=37451b600b46ec72a65cd3be575a8c25"></p>
+<p>这种情况下，上层镜像层中的文件覆盖了底层镜像层中的文件。这样就使得文件的更新版本作为一个新的镜像层添加到镜像当中。</p>
+<p>Docker通过存储引擎（新版本采用快照机制）的方式来实心镜像层堆栈，并保证多镜像层对外展示为统一的文件系统。</p>
+<p>Linux 上可用的存储引擎有AUFS、Overlay2，Device Maper、Btrfs 以及 ZFS。顾名思义，没种存储引擎都基于Linux中对应的文件系统或者块设备技术，并且每种存储引擎都有其独有的性能特点。</p>
+<p>Docker在Windows上仅支持windowsfiler 一种存储引擎，该引擎基于NTFS文件系统之上实现了分层和CoW[1]。</p>
+<p>下图展示了与系统显示相同的三层镜像。所有镜像层堆叠并合并，对外提供统一的视图。</p>
+<p><img src="https://note.youdao.com/yws/api/personal/file/9EF5C321901F4235848CB7B618C97D92?method=download&shareKey=ded78a83edba3f39c590b8ce23d852e4"></p>
+<p>特点：</p>
+<p>Docker镜像都是只读的，当容器启动时，一个新的可写层被加载到镜像的顶部；</p>
+<p>这一层就是我们通常说的容器层，容器之下的都叫镜像层。你的所有操作都是基于容器层的。</p>
+<h3>commit镜像</h3>
+
+
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">docker commit 提交容器成为一个新的副本</span><br><span class="line"># 命令和git原理类似</span><br><span class="line"></span><br><span class="line">docker commit -m=&quot;描述信息&quot; -a=&quot;作者&quot; 容器id 目标镜像名:[TAG]</span><br></pre></td></tr></table></figure>
+
+
+
+<p><code># 1、启动一个默认的tomcatdocker run -d -p 8080:8080 tomcat</code></p>
+<p><code># 2、发现这个默认的tomcat 是没有webapps应用，官方的镜像默认webapps下面是没有文件的！docker exec -it 容器id</code></p>
+<p><code># 3、拷贝文件进去</code></p>
+<p><code># 4、将操作过的容器通过commit**为一个镜像！我们以后就使用我们修改过的镜像即可，这就是我们自己的一个修改的镜像。docker commit -m=&quot;描述信息&quot; -a=&quot;作者&quot; 容器id 目标镜像名:[TAG]docker commit -a=&quot;kuangshen&quot; -m=&quot;add webapps app&quot; 容器id tomcat02:1.0</code></p>
+<p>测试：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">[root@iZ2zehf73q4a84x826efj3Z ~]# docker run -d -p 3338:8080 --name tomcat02 tomcat</span><br><span class="line">9288712b8207b74ab114594be71bea3bfbec8d8bc61309fec50918b0675b07c4</span><br><span class="line">[root@iZ2zehf73q4a84x826efj3Z ~]# docker exec -it tomcat01 /bin/bash</span><br><span class="line">Error response from daemon: Container eab3e7c6930ce129050fa4c0c31c80e07274824ef0724efe75c3ad72726bc43a is not running</span><br><span class="line"></span><br><span class="line">[root@iZ2zehf73q4a84x826efj3Z ~]# docker exec -it tomcat02 /bin/bash</span><br><span class="line">root@9288712b8207:/usr/local/tomcat# ls -a</span><br><span class="line">.   BUILDING.txt     LICENSE  README.md      RUNNING.txt  conf	logs		temp	 webapps.dist</span><br><span class="line">..  CONTRIBUTING.md  NOTICE   RELEASE-NOTES  bin	  lib	native-jni-lib	webapps  work</span><br><span class="line">root@9288712b8207:/usr/local/tomcat# cp -r webapps.dist/* webapps</span><br><span class="line">root@9288712b8207:/usr/local/tomcat# exit</span><br><span class="line">exit</span><br><span class="line"></span><br><span class="line">[root@iZ2zehf73q4a84x826efj3Z ~]# docker ps</span><br><span class="line">CONTAINER ID   IMAGE                 COMMAND             CREATED         STATUS         PORTS                    NAMES</span><br><span class="line">9288712b8207   tomcat                &quot;catalina.sh run&quot;   3 minutes ago   Up 3 minutes   0.0.0.0:3338-&gt;8080/tcp   tomcat02</span><br><span class="line">64a140e51289   portainer/portainer   &quot;/portainer&quot;        22 hours ago    Up 22 hours    0.0.0.0:8080-&gt;9000/tcp   elated_sinoussi</span><br><span class="line"></span><br><span class="line">[root@iZ2zehf73q4a84x826efj3Z ~]# docker commit -m &quot;aidou&quot; -a=&quot;idol&quot; 9288712b8207 tomcat02:1.0</span><br><span class="line">sha256:db3a847e5f0db7d23fec92867dc65e7c3fd6613f24fec772e49ea2cd049ccec2</span><br><span class="line"></span><br><span class="line">[root@iZ2zehf73q4a84x826efj3Z ~]# docker images</span><br><span class="line">REPOSITORY            TAG       IMAGE ID       CREATED          SIZE</span><br><span class="line">tomcat02              1.0       db3a847e5f0d   32 seconds ago   684MB</span><br><span class="line">tomcat                latest    904a98253fbf   8 days ago       680MB</span><br><span class="line">redis                 latest    40c68ed3a4d2   9 days ago       113MB</span><br><span class="line">nginx                 latest    ea335eea17ab   10 days ago      141MB</span><br><span class="line">mysql                 latest    b05128b000dd   10 days ago      516MB</span><br><span class="line">hello-world           latest    feb5d9fea6a5   2 months ago     13.3kB</span><br><span class="line">centos                latest    5d0da3dc9764   2 months ago     231MB</span><br><span class="line">portainer/portainer   latest    580c0e4e98b0   8 months ago     79.1MB</span><br><span class="line">elasticsearch         7.6.2     f29a1ee41030   20 months ago    791MB</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h3>容器数据卷</h3>
+
+<p>容器之间可以有一个数据共享的技术！Docker容器中产生的数据，同步到本地；</p>
+<p>这就是卷技术！目录的挂载，将我们容器内的目录，挂载到Linux上面。</p>
+<p><img src="https://note.youdao.com/yws/api/personal/file/8A81086469DB4291819C62E9811FB381?method=download&shareKey=f3d6553f448ca7d211583889a385076a"></p>
+<p>容器的持久化和同步操作，容器间也是可以数据共享的。</p>
+<hr>
+<p>直接使用命令挂载：</p>
+<p>docker run -it -v 主机目录:容器内目录  </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[root@iZ2zehf73q4a84x826efj3Z home]# docker run -it -v /home/ceshi:/home centos /bin/bash</span><br><span class="line">[root@a4599043acd5 /]# exit</span><br><span class="line">exit</span><br><span class="line">[root@iZ2zehf73q4a84x826efj3Z home]# ls -a</span><br><span class="line">.  ..  ceshi  git  www</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<p>通过 docker inspect 容器id 查看</p>
+<p><img src="https://note.youdao.com/yws/api/personal/file/F86BCABCA0614CF49DAD990BCF89EC75?method=download&shareKey=0815a8d5b9d947fd8b3acbf342f6ab45"></p>
+<p>测试文件同步：</p>
+<p><img src="https://note.youdao.com/yws/api/personal/file/A306829C22334FF182C2441E825C4637?method=download&shareKey=3f1fc0f72a230c42195a8c43afcc226a"></p>
+<p><strong>安装Mysql</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"># 获取mysql镜像</span><br><span class="line">➜ ~ docker pull mysql:5.7</span><br><span class="line"># 运行容器,需要做数据挂载 #安装启动mysql，需要配置密码的，这是要注意点！</span><br><span class="line"># 参考官网hub</span><br><span class="line">docker run --name some-mysql -e MYSQL_ROOT_PASSWORD=my-secret-pw -d mysql:tag</span><br><span class="line">#启动我们得</span><br><span class="line">-d 后台运行</span><br><span class="line">-p 端口映射</span><br><span class="line">-v 卷挂载</span><br><span class="line">-e 环境配置</span><br><span class="line">-- name 容器名字</span><br><span class="line">➜ ~ docker run -d -p 3306:3306 -v /home/mysql/conf:/etc/mysql/conf.d -v /home/mysql/data:/var/lib/mysql </span><br><span class="line">-e MYSQL_ROOT_PASSWORD=123456 --name mysql01 mysql:5.7</span><br><span class="line"># 启动成功之后，我们在本地使用sqlyog来测试一下</span><br><span class="line"># sqlyog-连接到服务器的3306--和容器内的3306映射</span><br><span class="line"># 在本地测试创建一个数据库，查看一下我们映射的路径是否ok！</span><br></pre></td></tr></table></figure>
+
+<hr>
+<p><strong>具名的匿名挂载</strong></p>
+<p><strong>匿名挂载</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"># 匿名挂载</span><br><span class="line">-v 容器内路径！</span><br><span class="line">[root@iZ2zehf73q4a84x826efj3Z ~]# docker run -d -P --name nginx02 -v /etc/nginx nginx</span><br><span class="line">6b70697fffc6cecfb67111da07e1325f2a41966c245799361562ed4faf626ea8</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># 查看所有的volume的情况</span><br><span class="line">[root@iZ2zehf73q4a84x826efj3Z ~]# docker volume ls</span><br><span class="line">DRIVER    VOLUME NAME</span><br><span class="line">local     77f1abfca66c0a501f1858e82b4666bf0ddb2f5b1edf34bf41eca571d1daaa0a</span><br><span class="line">local     7380d8b9c28d56dad8ac2873fc3db48233b5a6ff35de95482ff667dde76d41cd</span><br><span class="line">local     be93ac777e2c0e88ad041c815f60c1e15b392c08430baea7848cab3c4e37c4d5</span><br><span class="line">local     ec7ff3cdb9b4ab1a13bd3aba5ccef1d676f33ccde7ea80b24aabccae1fc12d75</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<hr>
+<p><strong>具名挂载</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">#具名挂载</span><br><span class="line">[root@iZ2zehf73q4a84x826efj3Z ~]# docker run -d -P --name nginx03 -v juming-nginx:/etc/nginx nginx</span><br><span class="line">0a2e46d0f61e33b88c07f23a4b7d299eab7f94ae8a5df8ef6a6180d55ae478b2</span><br><span class="line"></span><br><span class="line">[root@iZ2zehf73q4a84x826efj3Z ~]# docker volume ls</span><br><span class="line">DRIVER    VOLUME NAME</span><br><span class="line">local     77f1abfca66c0a501f1858e82b4666bf0ddb2f5b1edf34bf41eca571d1daaa0a</span><br><span class="line">local     7380d8b9c28d56dad8ac2873fc3db48233b5a6ff35de95482ff667dde76d41cd</span><br><span class="line">local     be93ac777e2c0e88ad041c815f60c1e15b392c08430baea7848cab3c4e37c4d5</span><br><span class="line">local     ec7ff3cdb9b4ab1a13bd3aba5ccef1d676f33ccde7ea80b24aabccae1fc12d75</span><br><span class="line">local     juming-nginx</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<hr>
+<p>所有的docker容器内的卷，没有指定目录的情况下都是在</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/var/lib/docker/volumes/xxx/_data</span><br></pre></td></tr></table></figure>
+
+
+
+<p>通过具名挂载可以方便的找到我们的 一个卷，大多数情况使用的是 具名挂载</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># 如何确定是具名挂载还是匿名挂载，还是指定路径挂载！</span><br><span class="line">-v 容器内路径          # 匿名挂载</span><br><span class="line">-v 卷名:容器内路径      # 具名挂载</span><br><span class="line">-v /宿主机路径:容器路径  # 指定路径挂载！</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"># 通过 -v 容器内路径： ro rw 改变读写权限</span><br><span class="line">ro readonly  # 只读</span><br><span class="line">rw readwrite # 可读可写</span><br><span class="line"># 一旦设置了容器权限，容器对我们挂载出来的内容就有限定了！</span><br><span class="line">docker run -d -P --name nginx05 -v juming:/etc/nginx:ro nginx</span><br><span class="line">docker run -d -P --name nginx05 -v juming:/etc/nginx:rw nginx</span><br><span class="line"># ro 只要看到ro就说明这个路径只能通过宿主机来操作，容器内部是无法操作！</span><br></pre></td></tr></table></figure>
+
+
+  </div>
+  <!--文末结束语-->
+  
+    <div style="text-align:center;color: #ccc;font-size:24px;"> --- The End --- </div>
+  
+  <!--页脚广告-->
+  
+  <div class="mdui-divider"></div>
+  
+  <nav>
+    
+      <a rel="prev" class="post-nav-item mdui-float-left" href="/2021/12/09/hello-world/">
+        <i class="iconfont icon-angle-left"></i>
+        <span>Hello World</span>
+      </a>
+    
+    
+      <a rel="next" class="post-nav-item mdui-float-right" href="/2021/11/26/Docker%E5%8F%AF%E8%A7%86%E5%8C%96/">
+        <span>Docker可视化</span>
+        <i class="iconfont icon-angle-right"></i>
+      </a>
+    
+  </nav>
+</article>
+
+
+
+
+  <div class="toc-button"  style="z-index: 100;">
+    <button class="mdui-fab mdui-ripple mdui-color-cyan" mdui-menu="{target: '#toc'}"><i class="iconfont icon-list"></i></button>
+    <ul class="mdui-menu" id="toc">
+      <li class="mdui-menu-item">
+        <a href="/2021/11/26/docker%E9%95%9C%E5%83%8F%E8%AE%B2%E8%A7%A3/" id="toc-header" class="mdui-ripple">文章目录</a>
+        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-number">1.</span> <span class="toc-text">镜像是什么？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-number">2.</span> <span class="toc-text">docker镜像加载原理?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-number">3.</span> <span class="toc-text">分层理解</span></a></li><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-number">4.</span> <span class="toc-text">commit镜像</span></a></li><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-number">5.</span> <span class="toc-text">容器数据卷</span></a></li></ol>
+      </li>
+    </ul>
+  </div>
+
+
+
+    <div id="comment" class="mdui-card mdui-p-a-2 mdui-m-b-5">
+      <div class="mdui-tab" mdui-tab>
+        
+          <a href="#comment-tab0" class="mdui-ripple">gitalk</a>
+        
+          <a href="#comment-tab1" class="mdui-ripple">livere</a>
+        
+      </div>
+      
+        <div id="comment-tab0" class="mdui-p-a-2">
+          <div id="gitalk-container"></div>
+<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+<script src="//cdn.jsdelivr.net/npm/js-md5@0.7.3/src/md5.min.js"></script>
+<script>
+  var gitalk = new Gitalk({
+    clientID: '',
+    clientSecret: '',
+    repo: '',
+    owner: '',
+    admin: [''],
+    id:  md5(location.pathname) ,
+    distractionFreeMode: 'true',
+  });
+  gitalk.render('gitalk-container');
+</script>
+        </div>
+      
+        <div id="comment-tab1" class="mdui-p-a-2">
+          <div id="lv-container" data-id="city" data-uid="">
+  <script type="text/javascript">
+    (function (d, s) {
+      var j, e = d.getElementsByTagName(s)[0];
+      if (typeof LivereTower === 'function') { return; }
+      j = d.createElement(s);
+      j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+      j.async = true;
+      e.parentNode.insertBefore(j, e);
+    })(document, 'script');
+  </script>
+  <noscript>Please enable JavaScript to view the comments powered by LiveRe.</noscript>
+</div>
+        </div>
+      
+    </div>
+
+  </main>
+  <footer id="footer" class="mdui-text-center mdui-m-t-5 mdui-p-b-2 mdui-p-t-4 mdui-color-theme">
+  <div class="mdui-container">
+    <div class="mdui-row">
+      
+        <a href="https://beian.miit.gov.cn" rel="noopener" target="_blank"></a>
+      
+      <span>
+        &copy; 2015 - 2021 
+        
+          <span style="color:#000000" class="iconfont icon-heart"></span>
+        
+        Aidou-idol
+      </span>
+    </div>
+    <div class="mdui-row">
+      
+      
+        <div class="mdui-col-xs-6 mdui-text-right">
+          <span>Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a></span>
+        </div>
+      <div class="mdui-col-xs-6 mdui-text-left">
+          <span>Theme: Meadow</a></span>
+        </div>
+     
+     
+      
+    </div>
+    <div class="mdui-row">
+      
+        <div class="mdui-col-xs-6 mdui-text-right">
+          <span id="busuanzi_container_site_uv" style="display: none;"> <span class="iconfont icon-user"></span>总访客量 <span id="busuanzi_value_site_uv"></span></span>
+        </div>
+        <div class="mdui-col-xs-6 mdui-text-left">
+          <span id="busuanzi_container_site_pv" style="display: none;"> <span class="iconfont icon-eye"></span>总访问量 <span id="busuanzi_value_site_pv"></span></span>
+        </div>
+      
+    </div>
+ </div>
+</footer>
+  
+  <button id="gotop" class="mdui-fab mdui-fab-fixed mdui-fab-hide mdui-ripple mdui-color-cyan" style="z-index:100;"><i class="iconfont icon-arrowup"></i></button>
+  
+  
+
+    <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@8.4.8/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({
+        startOnLoad: true,
+        theme: "default"
+    });</script>
+
+
+
+
+    
+<script src="/js/mdui.min.v1.0.0.js"></script>
+
+
+
+
+<script src="/js/meadow.js"></script>
+
+</body>
+</html >

@@ -1,0 +1,512 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title>Docker可视化</title>
+    <url>/2021/11/26/Docker%E5%8F%AF%E8%A7%86%E5%8C%96/</url>
+    <content><![CDATA[<p>什么是portainer？</p>
+<p>Docker图形化界面管理工具</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># 运行如下命令即可 打开可视化服务</span><br><span class="line">docker run -d -p 8080:9000 \</span><br><span class="line">--restart=always -v /var/run/docker.sock:/var/run/docker.sock --privileged=true portainer/portainer</span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[root@iZ2zehf73q4a84x826efj3Z ~]# docker run -d -p 8089:9000 \</span><br><span class="line">&gt; --restart=always -v /var/run/docker.sock:/var/run/docker.sock --privileged=true portainer/portainer</span><br><span class="line">Unable to find image &#x27;portainer/portainer:latest&#x27; locally</span><br><span class="line">latest: Pulling from portainer/portainer</span><br><span class="line">94cfa856b2b1: Pull complete </span><br><span class="line">49d59ee0881a: Pull complete </span><br><span class="line">a2300fd28637: Pull complete </span><br><span class="line">Digest: sha256:fb45b43738646048a0a0cc74fcee2865b69efde857e710126084ee5de9be0f3f</span><br><span class="line">Status: Downloaded newer image for portainer/portainer:latest</span><br><span class="line">64a140e51289fff09a1eb71909d7b72812889fc08c895e06b0bab3e633e9a6f9</span><br></pre></td></tr></table></figure>
+
+<p>访问：<a href="http://ip:8089/">http://ip:8089/</a></p>
+<p>进入面板：</p>
+<p><img src="https://note.youdao.com/yws/api/personal/file/EC128A594DB14D3AB17E15AE5A1ECA54?method=download&shareKey=2a9ba021c827cba83ab29c4c923fb2c7"></p>
+]]></content>
+      <categories>
+        <category>操作系统层虚拟化</category>
+      </categories>
+      <tags>
+        <tag>应用容器引擎</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>冒泡排序</title>
+    <url>/2021/11/08/aidou%E7%9A%84%E5%8D%9A%E5%AE%A2/</url>
+    <content><![CDATA[<h2>冒泡排序</h2>
+
+<p>相邻位比较，反序则互换<br>   /**<br>   * 冒泡排序<br>   * @param array<br>   */</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">bubbletSort</span><span class="params">(<span class="keyword">int</span>[] array)</span> </span>&#123;</span><br><span class="line">    <span class="comment">//[3]用最外层循环i控制比较的轮次，第i轮比较的时候，就有i个元素已经有序，则这i个元素是不需要进行排序的，而在整个长度为n的数组中，只要进行n-1轮排序即可</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; array.length-<span class="number">1</span>-<span class="number">1</span>; i++) &#123;</span><br><span class="line">      <span class="comment">//[2]内层循环控制两个相邻位下标的变化，在第i轮比较中，数组的后i个元素就是有序的，所以不需要参与比较</span></span><br><span class="line">      <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j+<span class="number">1</span> &lt;= array.length-<span class="number">1</span>-i; j++) &#123;</span><br><span class="line">        <span class="comment">//[1]相邻位比较，反序则互换</span></span><br><span class="line">        <span class="keyword">if</span>(array[j] &gt; array[j+<span class="number">1</span>]) &#123;</span><br><span class="line">          <span class="keyword">int</span> tmp = array[j];</span><br><span class="line">          array[j] = array[j+<span class="number">1</span>];</span><br><span class="line">          array[j+<span class="number">1</span>] = tmp;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span>[] array = <span class="keyword">new</span> <span class="keyword">int</span>[] &#123;<span class="number">7</span>,<span class="number">0</span>,<span class="number">1</span>,<span class="number">9</span>,<span class="number">2</span>,<span class="number">6</span>,<span class="number">3</span>,<span class="number">8</span>,<span class="number">5</span>,<span class="number">4</span>&#125;;</span><br><span class="line">    BubbleSort bs = <span class="keyword">new</span> BubbleSort();</span><br><span class="line">    bs.bubbletSort(array);</span><br><span class="line">    System.out.println(Arrays.toString(array));</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>算法</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>Xshell 7连接阿里云服务器</title>
+    <url>/2021/11/20/centos8%E8%BF%9E%E6%8E%A5Xshell7/</url>
+    <content><![CDATA[<h2>采用密钥对的方式连接Xshell 7</h2>
+
+<p>购买阿里云服务器，选用的是centos8系统。</p>
+<p>相关链接：</p>
+<p>xshell下载地址：<a href="https://www.xshellcn.com/">https://www.xshellcn.com/</a></p>
+<p>阿里云官网：<a href="https://www.aliyun.com/">https://www.aliyun.com/</a></p>
+<hr>
+<p>与xshell有关的：</p>
+<p>Xshell 是一个强大的安全终端模拟软件，它支持SSH1, SSH2, 以及Microsoft Windows 平台的TELNET 协议。Xshell 通过互联网到远程<a href="https://baike.baidu.com/item/%E4%B8%BB%E6%9C%BA">主机</a>的安全连接以及它创新性的设计和特色帮助用户在复杂的网络环境中享受他们的工作。Xshell可以在Windows界面下用来访问远端不同系统下的服务器，从而比较好的达到远程控制终端的目的。</p>
+<h2>连接方法</h2>
+
+<p>1 、进入阿里云控制台，找到<strong>密钥对</strong>选项，并创建密钥对。</p>
+<p><img src="https://note.youdao.com/yws/api/personal/file/2E772746172B41D796782E7AD92794F6?method=download&shareKey=492ac720c077719254207bbbcc248fe6" alt="sad"></p>
+<p>2、填写密钥对名称（随意即可）</p>
+<p><img src="https://note.youdao.com/yws/api/personal/file/4BF72F1C097547B69742720C91BD8A67?method=download&shareKey=1a0def19fe72bc91d8be76e933371dc4" alt="sad"></p>
+<p>3、点击确定后，会下载一个.pem结尾的文件</p>
+<p><img src="https://note.youdao.com/yws/api/personal/file/9C71479E49EA4BEA8B5114D2E06AB43B?method=download&shareKey=9ba7c7f367177f08d56fa7588b241bad" alt="sad"></p>
+<p>4、复制云服务器的ip地址到Xshell</p>
+<p><img src="https://note.youdao.com/yws/api/personal/file/23D62849F9AC4551ABB5487518391EA0?method=download&shareKey=ed4248fe4ab94df6366cf1c91e22d511" alt="sad"></p>
+<p>5、新建会话，复制云服务器的ip地址</p>
+<p><img src="https://note.youdao.com/yws/api/personal/file/C3597176D49541B8A15A0D25AD2D868E?method=download&shareKey=6243a6f4434ba28c6c988ffaf70253b8" alt="sad"></p>
+<p>6、用户身份验证，按步骤配置好后，进入设置</p>
+<p><img src="https://note.youdao.com/yws/api/personal/file/CC15661090E344A59F32F5431E0B35CC?method=download&shareKey=ee677346d2d8259ffe933fc742360e72" alt="sad"></p>
+<p>7.将testdemo.pem文件导入</p>
+<p><img src="https://note.youdao.com/yws/api/personal/file/64D8BB86BA0B4945A307B115776989CE?method=download&shareKey=85b3aacabf9a58d4354570c397bb7e1b" alt="sad"></p>
+<p>7、 连接，输入用户名：root</p>
+<p><img src="https://note.youdao.com/yws/api/personal/file/C67EABA0C3184FCA8130BAB1F443820A?method=download&shareKey=c71e28166ecc7291eba97a640321837f" alt="sad"></p>
+<p>8、输入密码，如果忘记了密码，去阿里云重置一下实例密码</p>
+<p><img src="https://note.youdao.com/yws/api/personal/file/9D2FC79E909245A4A5CF6F6D1AC2AC7E?method=download&shareKey=1ca5933b06ac05df6889d579c7613ee5" alt="sad"></p>
+<p>9、到这里就连接成功了</p>
+<p><img src="https://note.youdao.com/yws/api/personal/file/EBF4C9D635CE4F3C896E9E89385EE42C?method=download&shareKey=02f2c16bfbea241c1117e49d518a46bd" alt="sad"></p>
+]]></content>
+      <categories>
+        <category>环境搭建</category>
+      </categories>
+      <tags>
+        <tag>服务器</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Docker容器</title>
+    <url>/2021/11/18/docker%E5%AE%B9%E5%99%A8/</url>
+    <content><![CDATA[<p>​        Docker 是一个开源的应用容器引擎，让开发者可以打包他们的应用以及依赖包到一个可移植的镜像中，然后发布到任何流行的 Linux或Windows操作系统的机器上，也可以实现虚拟化。容器是完全使用沙箱机制，相互之间不会有任何接口。</p>
+<hr>
+<h3>初步认识Docker</h3>
+
+<p><strong>Docker学习</strong></p>
+<p>Docker概述、Docker安装、Docker命令（镜像命令。容器命令。操作命令）、<br>Docker镜像、容器数据卷、DockerFile 、Docker网络原理、IDEA整合Docker 、Docker Compose 、Docker Swarm、CI\CD Jenkins</p>
+<p><strong>Docker为什么出现?</strong></p>
+<p>一款产品:开发–上线两套环境？</p>
+<p>应用环境，应用配置。</p>
+<p>开发运维。问题︰我在我的电脑上可以运行!版本更新，导致服务不可用!对于运维来说，考验就十分大?环境配置是十分的麻烦，每一个机器都要部署环境（集群Redis、ES、Hadoop….）)!费时费力。</p>
+<p>发布一个项目( jar + ( Redis MySQL  jdk ES ))，项目能不能都带上环境安装打包。<br>之前在服务器配置一个应用的环境Redis 、MySQL、 jdk、 ES、 Hadoop ，配置超麻烦了，不能够跨平台。</p>
+<p>Windows，最后发布到Linux 。</p>
+<p>传统:开发jar，运维来做!</p>
+<p>现在:开发打包部署上线，一套流程做完!</p>
+<hr>
+<p><strong>Docker核心思想</strong></p>
+<p>隔离</p>
+<hr>
+<p><strong>Docker的历史</strong></p>
+<p>2010年，几个搞IT的年轻人，就在美国成立了一家公司dotcloud做一些pass 的云计算服务，LXC有关的容器技术。<br>他们将自己的技术(容器化技术)命名就是Docker 。Docker刚刚诞生的时候，没有引起行业的注意。</p>
+<p>开发源代码：<br>2013年，Docker开源，Docker越来越多的人发现了docker的优点，Docker每个月都会更新一个版本。2014年4月9日，Docker1.0发布。</p>
+<p>Docker为什么这么火?</p>
+<p>十分的轻巧。</p>
+<p>在容器技术出来之前，我们都是使用虚拟机技术。</p>
+<p>虚拟机︰在window中装一个Vmware，通过这个软件我们可以虚拟出来一台或者多台电脑，笨重！</p>
+<p>虚拟机也是属于虚拟化技术，Docker容器技术，也是一种虚拟化技术。</p>
+<p>vm :  linux centos原生镜像（一个电脑）隔离，需要开启多个虚拟机。</p>
+<p>docker：隔离，镜像（最核心的环境4m + jdk + mysq1)十分的小巧，运行镜像就可以了，小巧，几个M 、KB秒级启动。</p>
+<hr>
+<p><strong>聊聊Docker</strong></p>
+<p>Docker是基于Go语言开发的!开源项目！</p>
+<p>官网: <a href="https://www.docker.com/">https://www.docker.com</a></p>
+<p>文档地址: <a href="https://docs.docker.com/">https://docs.docker.com</a> </p>
+<p>Docker的文档是超级详细的!仓库地址: <a href="https://hub.docker.com/">https://hub.docker.com</a></p>
+<p>虚拟机技术缺点∶1、资源占用十分多2、冗余步骤多3、启动很慢!</p>
+<p>容器化技术：容器化技术不是模拟的一个完整的操作系统</p>
+<p>比较Docker和虚拟机技术的不同:</p>
+<p>传统虚拟机，虚拟出一条硬件，运行一个完整的操作系统，然后在这个系统上安装和运行软件。</p>
+<p>容器内的应用直接运行在宿主机的内容，容器是没有自己的内核的，也没有虚拟我们的硬件，所以就轻便了。</p>
+<p>每个容器间是互相隔离，每个容器内都有一个属于自己的文件系统，互不影响。</p>
+<hr>
+<p><strong>DevOps (开发、运维)</strong>:</p>
+<p>应用更快速的交付和部署</p>
+<p>传统:—堆帮助文档，安装程序<br>Docker : 打包镜像发布测试，一键运行</p>
+<p><strong>更便捷的升级和扩缩容</strong></p>
+<p>使用了Docker之后，我们部署应用就和搭积木一样!项目打包为一个镜像，,扩展服务器A!服务器B更简单的系统运维<br>在容器化之后，我们的开发，测试环境都是高度一致的。</p>
+<p><strong>更高效的计算资源利用:</strong><br>Docker是内核级别的虚拟化，可以再一个物理机上可以运行很多的容器实例!服务器的性能可以被压榨到极致。</p>
+<hr>
+<p><strong>Docker的基本组成</strong></p>
+<p><img src="https://img-blog.csdnimg.cn/7ce6f527b3fa486db91ba724a6d596be.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBA6Im-6LGGaWRvbA==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"></p>
+<p><strong>镜像( image ) :</strong></p>
+<p>docker镜像就好比是一个模板，可以通过这个模板来创建容器服务，tomcat镜像===&gt;run ==&gt; tomcat01容器(提供服务器）。</p>
+<p>通过这个镜像可以创建多个容器（最终服务运行或者项目运行就是在容器中的)。</p>
+<p><strong>容器（ container ) :</strong></p>
+<p>Docker利用容器技术，独立运行一个或者一个组应用，通过镜像来创建的。</p>
+<p>启动，停止，删除，基本命令。</p>
+<p>目前就可以把这个容器理解为就是一个简易的linux</p>
+<p><strong>系统仓库( repository ) :</strong></p>
+<p>仓库就是存放镜像的地方!</p>
+<p>仓库分为公有仓库和私有仓库!</p>
+<p>Docker Hub(默认是国外的)</p>
+<hr>
+<h3>安装Docker</h3>
+
+<p>查看系统的内核：uname -r</p>
+<p>查看系统配置：cat /etc/os-release</p>
+<p>1、卸载旧版本Docker命令：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">yum remove docker \</span><br><span class="line">                  docker-client \</span><br><span class="line">                  docker-client-latest \</span><br><span class="line">                  docker-common \</span><br><span class="line">                  docker-latest \</span><br><span class="line">                  docker-latest-logrotate \</span><br><span class="line">                  docker-logrotate \</span><br><span class="line">                  docker-engine</span><br></pre></td></tr></table></figure>
+
+<p>2、下载需要的安装包</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">yum install -y yum-utils</span><br></pre></td></tr></table></figure>
+
+<p>3、设置阿里云的Docker镜像仓库</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">yum-config-manager \</span><br><span class="line">    --add-repo \</span><br><span class="line">    https://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo</span><br></pre></td></tr></table></figure>
+
+<p>4、更新yum软件包索引</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">yum makecache fast</span><br></pre></td></tr></table></figure>
+
+<p>5、安装Docker相关配置</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">yum install docker-ce docker-ce-cli containerd.io</span><br></pre></td></tr></table></figure>
+
+<p>6、启动Docker，查看是否安装成功，出现Docker的版本号，说明安装成功了</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">systemctl start docker  	#启动Docker</span><br><span class="line">docker -v					#查看Docker的版本号</span><br><span class="line">systemctl enable docker 	#设置开机自启动</span><br></pre></td></tr></table></figure>
+
+<p>​    版本号：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Docker version 20.10.11, build dea9396</span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>Docke容器的运行流程：</strong></p>
+<p><img src="https://note.youdao.com/yws/api/personal/file/2E5DBE8618044260BFBBC6C7CA20F08F?method=download&shareKey=ccf981c917d0741ac79e500d77652a12" alt="sad"></p>
+<p>下载hello-world镜像进行测试</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[root@iZ2zehf73q4a84x826efj3Z ~]# docker run hello-world</span><br><span class="line">Unable to find image &#x27;hello-world:latest&#x27; locally</span><br><span class="line">latest: Pulling from library/hello-world</span><br><span class="line">2db29710123e: Pull complete </span><br><span class="line">Digest: sha256:cc15c5b292d8525effc0f89cb299f1804f3a725c8d05e158653a563f15e4f685</span><br><span class="line">Status: Downloaded newer image for hello-world:latest</span><br><span class="line">runc: symbol lookup error: runc: undefined symbol: seccomp_api_get</span><br><span class="line">docker: Error response from daemon: cannot start a stopped process: unknown.</span><br></pre></td></tr></table></figure>
+
+<p>查看下载的hello world镜像：docker images</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[root@iZ2zehf73q4a84x826efj3Z ~]# docker images</span><br><span class="line">REPOSITORY    TAG       IMAGE ID       CREATED        SIZE</span><br><span class="line">hello-world   latest    feb5d9fea6a5   2 months ago   13.3kB</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#解释:</span><br><span class="line">1.REPOSITORY  镜像的仓库源</span><br><span class="line">2.TAG  镜像的标签</span><br><span class="line">3.IMAGE ID 镜像的id</span><br><span class="line">4.CREATED 镜像的创建时间</span><br><span class="line">5.SIZE 镜像的大小</span><br><span class="line"># 可选参数</span><br><span class="line">-a/--all 列出所有镜像</span><br><span class="line">-q/--quiet 只显示镜像的id</span><br></pre></td></tr></table></figure>
+
+
+
+<hr>
+<h3>卸载Docker</h3>
+
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># 1. 卸载依赖</span><br><span class="line">yum remove docker-ce docker-ce-cli containerd.io</span><br><span class="line"># 2. 删除资源  . /var/lib/docker是docker的默认工作路径</span><br><span class="line">rm -rf /var/lib/docker</span><br></pre></td></tr></table></figure>
+
+<h3>配置镜像加速</h3>
+
+<p>针对Docker客户端版本大于 1.10.0 的用户</p>
+<p>您可以通过修改daemon配置文件/etc/docker/daemon.json来使用加速器</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo mkdir -p /etc/docker</span><br><span class="line"></span><br><span class="line">sudo tee /etc/docker/daemon.json &lt;&lt;-&#x27;EOF&#x27;</span><br><span class="line">&#123;</span><br><span class="line">  &quot;registry-mirrors&quot;: [&quot;https://731rylhk.mirror.aliyuncs.com&quot;]</span><br><span class="line">&#125;</span><br><span class="line">EOF</span><br><span class="line"></span><br><span class="line">sudo systemctl daemon-reload</span><br><span class="line"></span><br><span class="line">sudo systemctl restart docker</span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>Docker底层原理</strong></p>
+<p>Docker是一个Client-Server结构的系统，Docker的守护进程运行在主机上，通过Socket从客户端访问。Docker Server接收到Docker-Client的指令，就会执行这个指令。</p>
+<p><img src="https://note.youdao.com/yws/api/personal/file/98FD365A7EC1461A9D0A3770617F36D7?method=download&shareKey=655aa7ac23c344ba58ea0e96025f9e23" alt="sadd"></p>
+<p><strong>Docker为什么比VM Ware快？</strong></p>
+<p>1、Docker比虚拟机更少的抽象层</p>
+<p>2、docker利用宿主机的内核，VM需要的是Guest OS</p>
+<p>Docker新建一个容器的时候，不需要像虚拟机一样重新加载一个操作系统内核，直接利用宿主机的操作系统，而虚拟机是需要加载Guest OS。</p>
+<hr>
+<p><strong>Docker常用命令</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">docker -v         #查看docker的版本信息</span><br><span class="line">docker info             #查看docker的系统信息,包括镜像和容器的数量</span><br><span class="line">docker 命令 --help       #帮助命令(可查看可选的参数)</span><br><span class="line">docker COMMAND --help</span><br></pre></td></tr></table></figure>
+
+<p>命令的帮助文档：<a href="https://docs.docker.com/engine/reference/commandline/docker/">https://docs.docker.com/engine/reference/commandline/docker/</a></p>
+<p><strong>镜像命令</strong></p>
+<p>docker search 搜索镜像</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[root@iZ2zehf73q4a84x826efj3Z ~]# docker search mysql</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">#可选参数</span><br><span class="line">Search the Docker Hub for images</span><br><span class="line"></span><br><span class="line">Options:</span><br><span class="line">  -f, --filter filter   Filter output based on conditions provided</span><br><span class="line">      --format string   Pretty-print search using a Go template</span><br><span class="line">      --limit int       Max number of search results (default 25)</span><br><span class="line">      --no-trunc        Don&#x27;t truncate output</span><br><span class="line"></span><br><span class="line">#搜索收藏数大于3000的镜像</span><br><span class="line">[root@iZ2zehf73q4a84x826efj3Z ~]# docker search mysql --filter=STARS=3000</span><br><span class="line">NAME      DESCRIPTION                                     STARS     OFFICIAL   AUTOMATED</span><br><span class="line">mysql     MySQL is a widely used, open-source relation…   11716     [OK]       </span><br><span class="line">mariadb   MariaDB Server is a high performing open sou…   4466      [OK]   </span><br></pre></td></tr></table></figure>
+
+<p>docker pull : 从镜像仓库中拉取或者更新指定镜像</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">docker pull centos</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<hr>
+<p>运行容器</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">docker run [可选参数] image</span><br><span class="line"></span><br><span class="line">#参数说明</span><br><span class="line">--name=&quot;名字&quot;           指定容器名字</span><br><span class="line">-d                     后台方式运行</span><br><span class="line">-it                    使用交互方式运行,进入容器查看内容</span><br><span class="line">-p                     指定容器的端口</span><br><span class="line">(</span><br><span class="line">-p ip:主机端口:容器端口  配置主机端口映射到容器端口</span><br><span class="line">-p 主机端口:容器端口</span><br><span class="line">-p 容器端口</span><br><span class="line">)</span><br><span class="line">-P                     随机指定端口(大写的P)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>进入容器</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[root@iZwz99sm8v95sckz8bd2c4Z ~]# docker run -it centos /bin/bash</span><br><span class="line">[root@bd1b8900c547 /]# ls      </span><br><span class="line">bin  dev  etc  home  lib  lib64  lost+found  media  mnt  opt  proc  root  run  sbin  srv  sys  tmp  usr  var</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>如果进不去报错：</p>
+<p>docker: Error response from daemon: cannot start a stopped process: unknown.</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">yum install -y libseccomp-devel </span><br></pre></td></tr></table></figure>
+
+<hr>
+<p>退出容器</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#exit 停止并退出容器（后台方式运行则仅退出）</span><br><span class="line">#Ctrl+P+Q  不停止容器退出</span><br><span class="line">[root@bd1b8900c547 /]# exit</span><br><span class="line">exit</span><br><span class="line">[root@iZwz99sm8v95sckz8bd2c4Z ~]#</span><br></pre></td></tr></table></figure>
+
+<p>删除容器</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">docker rm 容器id                 #删除指定的容器,不能删除正在运行的容器,强制删除使用 rm -f</span><br><span class="line">docker rm -f $(docker ps -aq)   #删除所有的容器</span><br><span class="line">docker ps -a -q|xargs docker rm #删除所有的容器</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>启动、重启、停止容器</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">docker start 容器id          #启动容器</span><br><span class="line">docker restart 容器id        #重启容器</span><br><span class="line">docker stop 容器id           #停止当前运行的容器</span><br><span class="line">docker kill 容器id           #强制停止当前容器</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>日志的查看</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">docker logs --help</span><br></pre></td></tr></table></figure>
+
+<hr>
+<p>常用： </p>
+<p>docker logs -tf   容器id </p>
+<p>docker logs –tail number 容器id <em>#num为要显示的日志条数</em></p>
+<p>查看容器的元数据：docker inspect 容器id</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[root@iZ2zehf73q4a84x826efj3Z ~]# docker inspect 5d0da3dc9764</span><br><span class="line">[</span><br><span class="line">    &#123;</span><br><span class="line">        &quot;Id&quot;: &quot;sha256:5d0da3dc976460b72c77d94c8a1ad043720b0416bfc16c52c45d4847e53fadb6&quot;,</span><br><span class="line">        &quot;RepoTags&quot;: [</span><br><span class="line">            &quot;centos:latest&quot;</span><br><span class="line">        ],</span><br><span class="line">        &quot;RepoDigests&quot;: [</span><br><span class="line">            &quot;centos@sha256:a27fd8080b517143cbbbab9dfb7c8571c40d67d534bbdee55bd6c473f432b177&quot;</span><br><span class="line">        ],</span><br><span class="line">        &quot;Parent&quot;: &quot;&quot;,</span><br><span class="line">        &quot;Comment&quot;: &quot;&quot;,</span><br><span class="line">        &quot;Created&quot;: &quot;2021-09-15T18:20:05.184694267Z&quot;,</span><br><span class="line">        &quot;Container&quot;: &quot;9bf8a9e2ddff4c0d76a587c40239679f29c863a967f23abf7a5babb6c2121bf1&quot;,</span><br><span class="line">        &quot;ContainerConfig&quot;: &#123;</span><br><span class="line">            &quot;Hostname&quot;: &quot;9bf8a9e2ddff&quot;,</span><br><span class="line">            &quot;Domainname&quot;: &quot;&quot;,</span><br><span class="line">            &quot;User&quot;: &quot;&quot;,</span><br><span class="line">            &quot;AttachStdin&quot;: false,</span><br><span class="line">            &quot;AttachStdout&quot;: false,</span><br><span class="line">            &quot;AttachStderr&quot;: false,</span><br><span class="line">            &quot;Tty&quot;: false,</span><br><span class="line">            &quot;OpenStdin&quot;: false,</span><br><span class="line">            &quot;StdinOnce&quot;: false,</span><br><span class="line">            &quot;Env&quot;: [</span><br><span class="line">                &quot;PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin&quot;</span><br><span class="line">            ],</span><br><span class="line">            &quot;Cmd&quot;: [</span><br><span class="line">                &quot;/bin/sh&quot;,</span><br><span class="line">                &quot;-c&quot;,</span><br><span class="line">                &quot;#(nop) &quot;,</span><br><span class="line">                &quot;CMD [\&quot;/bin/bash\&quot;]&quot;</span><br><span class="line">            ],</span><br><span class="line">            &quot;Image&quot;: &quot;sha256:f5b050f177fd426be8fe998a8ecf3fb1858d7e26dff4080b29a327d1bd5ba422&quot;,</span><br><span class="line">            &quot;Volumes&quot;: null,</span><br><span class="line">            &quot;WorkingDir&quot;: &quot;&quot;,</span><br><span class="line">            &quot;Entrypoint&quot;: null,</span><br><span class="line">            &quot;OnBuild&quot;: null,</span><br><span class="line">            &quot;Labels&quot;: &#123;</span><br><span class="line">                &quot;org.label-schema.build-date&quot;: &quot;20210915&quot;,</span><br><span class="line">                &quot;org.label-schema.license&quot;: &quot;GPLv2&quot;,</span><br><span class="line">                &quot;org.label-schema.name&quot;: &quot;CentOS Base Image&quot;,</span><br><span class="line">                &quot;org.label-schema.schema-version&quot;: &quot;1.0&quot;,</span><br><span class="line">                &quot;org.label-schema.vendor&quot;: &quot;CentOS&quot;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;,</span><br><span class="line">        &quot;DockerVersion&quot;: &quot;20.10.7&quot;,</span><br><span class="line">        &quot;Author&quot;: &quot;&quot;,</span><br><span class="line">        &quot;Config&quot;: &#123;</span><br><span class="line">            &quot;Hostname&quot;: &quot;&quot;,</span><br><span class="line">            &quot;Domainname&quot;: &quot;&quot;,</span><br><span class="line">            &quot;User&quot;: &quot;&quot;,</span><br><span class="line">            &quot;AttachStdin&quot;: false,</span><br><span class="line">            &quot;AttachStdout&quot;: false,</span><br><span class="line">            &quot;AttachStderr&quot;: false,</span><br><span class="line">            &quot;Tty&quot;: false,</span><br><span class="line">            &quot;OpenStdin&quot;: false,</span><br><span class="line">            &quot;StdinOnce&quot;: false,</span><br><span class="line">            &quot;Env&quot;: [</span><br><span class="line">                &quot;PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin&quot;</span><br><span class="line">            ],</span><br><span class="line">            &quot;Cmd&quot;: [</span><br><span class="line">                &quot;/bin/bash&quot;</span><br><span class="line">            ],</span><br><span class="line">            &quot;Image&quot;: &quot;sha256:f5b050f177fd426be8fe998a8ecf3fb1858d7e26dff4080b29a327d1bd5ba422&quot;,</span><br><span class="line">            &quot;Volumes&quot;: null,</span><br><span class="line">            &quot;WorkingDir&quot;: &quot;&quot;,</span><br><span class="line">            &quot;Entrypoint&quot;: null,</span><br><span class="line">            &quot;OnBuild&quot;: null,</span><br><span class="line">            &quot;Labels&quot;: &#123;</span><br><span class="line">                &quot;org.label-schema.build-date&quot;: &quot;20210915&quot;,</span><br><span class="line">                &quot;org.label-schema.license&quot;: &quot;GPLv2&quot;,</span><br><span class="line">                &quot;org.label-schema.name&quot;: &quot;CentOS Base Image&quot;,</span><br><span class="line">                &quot;org.label-schema.schema-version&quot;: &quot;1.0&quot;,</span><br><span class="line">                &quot;org.label-schema.vendor&quot;: &quot;CentOS&quot;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;,</span><br><span class="line">        &quot;Architecture&quot;: &quot;amd64&quot;,</span><br><span class="line">        &quot;Os&quot;: &quot;linux&quot;,</span><br><span class="line">        &quot;Size&quot;: 231268856,</span><br><span class="line">        &quot;VirtualSize&quot;: 231268856,</span><br><span class="line">        &quot;GraphDriver&quot;: &#123;</span><br><span class="line">            &quot;Data&quot;: &#123;</span><br><span class="line">                &quot;MergedDir&quot;: &quot;/var/lib/docker/overlay2/dcea0d807d3350b3edfae33df0df1323d54fa033c367953996a3a0c4d264b65b/merged&quot;,</span><br><span class="line">                &quot;UpperDir&quot;: &quot;/var/lib/docker/overlay2/dcea0d807d3350b3edfae33df0df1323d54fa033c367953996a3a0c4d264b65b/diff&quot;,</span><br><span class="line">                &quot;WorkDir&quot;: &quot;/var/lib/docker/overlay2/dcea0d807d3350b3edfae33df0df1323d54fa033c367953996a3a0c4d264b65b/work&quot;</span><br><span class="line">            &#125;,</span><br><span class="line">            &quot;Name&quot;: &quot;overlay2&quot;</span><br><span class="line">        &#125;,</span><br><span class="line">        &quot;RootFS&quot;: &#123;</span><br><span class="line">            &quot;Type&quot;: &quot;layers&quot;,</span><br><span class="line">            &quot;Layers&quot;: [</span><br><span class="line">                &quot;sha256:74ddd0ec08fa43d09f32636ba91a0a3053b02cb4627c35051aff89f853606b59&quot;</span><br><span class="line">            ]</span><br><span class="line">        &#125;,</span><br><span class="line">        &quot;Metadata&quot;: &#123;</span><br><span class="line">            &quot;LastTagTime&quot;: &quot;0001-01-01T00:00:00Z&quot;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">]</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<p>进入当前容器：</p>
+<p>方法一</p>
+<p>通常我们的容器都是使用后台方式来运行的，有时需要进入容器修改配置</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[root@iZ2zehf73q4a84x826efj3Z ~]# docker exec -it 29ec1f5fbaf4 /bin/bash</span><br><span class="line">[root@29ec1f5fbaf4 /]# </span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>docker exec 进入容器后开启一个新的终端，可以在里面操作</p>
+<p>方法二</p>
+<p>docker attach 进入容器正在执行的终端，不会启动新的进程</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[root@iZ2zehf73q4a84x826efj3Z ~]# docker attach 29ec1f5fbaf4</span><br><span class="line">[root@29ec1f5fbaf4 /]#</span><br></pre></td></tr></table></figure>
+
+
+
+<p>拷贝容器的文件到主机中</p>
+<p>docker cp 容器id:容器内路径 目的主机路径</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[root@iZwz99sm8v95sckz8bd2c4Z ~]# docker exec -it c703b5b1911f /bin/bash</span><br><span class="line">[root@c703b5b1911f /]# cd home</span><br><span class="line">[root@c703b5b1911f home]# ls</span><br><span class="line">#touch 新建文件</span><br><span class="line">[root@c703b5b1911f home]# touch test.java</span><br><span class="line">[root@c703b5b1911f home]# ls</span><br><span class="line">test.java</span><br><span class="line">[root@c703b5b1911f home]# exit</span><br><span class="line">exit</span><br><span class="line">[root@iZwz99sm8v95sckz8bd2c4Z ~]# docker ps</span><br><span class="line">CONTAINER ID   IMAGE     COMMAND                  CREATED          STATUS          PORTS     NAMES</span><br><span class="line">c703b5b1911f   centos    &quot;/bin/sh -c &#x27;while t…&quot;   35 minutes ago   Up 35 minutes             pedantic_banach</span><br><span class="line">[root@iZwz99sm8v95sckz8bd2c4Z ~]# docker cp c703b5b1911f:/home/test.java /home</span><br><span class="line">[root@iZwz99sm8v95sckz8bd2c4Z ~]# ls /home</span><br><span class="line">hai  pan  test.java</span><br></pre></td></tr></table></figure>
+
+<p>命令图解：</p>
+<p><img src="https://note.youdao.com/yws/api/personal/file/127D7B2B5F624F4E834485A20AA660BC?method=download&shareKey=9e40c0e80c9138d498b86b47a7bde300"></p>
+]]></content>
+      <categories>
+        <category>操作系统层虚拟化</category>
+      </categories>
+      <tags>
+        <tag>应用容器引擎</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Docker安装部署nginx、tomcat、ElasticSearch</title>
+    <url>/2021/11/25/docker%E9%83%A8%E7%BD%B2nginx/</url>
+    <content><![CDATA[<h3>Docker安装部署nginx</h3>
+
+<p>安装nginx镜像：docker pull nginx</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[root@iZ2zehf73q4a84x826efj3Z ~]# docker pull nginx</span><br><span class="line">Using default tag: latest</span><br><span class="line">latest: Pulling from library/nginx</span><br><span class="line">eff15d958d66: Pull complete </span><br><span class="line">1e5351450a59: Pull complete </span><br><span class="line">2df63e6ce2be: Pull complete </span><br><span class="line">9171c7ae368c: Pull complete </span><br><span class="line">020f975acd28: Pull complete </span><br><span class="line">266f639b35ad: Pull complete </span><br><span class="line">Digest: sha256:097c3a0913d7e3a5b01b6c685a60c03632fc7a2b50bc8e35bcaa3691d788226e</span><br><span class="line">Status: Downloaded newer image for nginx:latest</span><br><span class="line">docker.io/library/nginx:latest</span><br></pre></td></tr></table></figure>
+
+<p>查看ngxin镜像：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[root@iZ2zehf73q4a84x826efj3Z ~]# docker images</span><br><span class="line">REPOSITORY    TAG       IMAGE ID       CREATED        SIZE</span><br><span class="line">nginx         latest    ea335eea17ab   7 days ago     141MB</span><br><span class="line">mysql         latest    b05128b000dd   7 days ago     516MB</span><br><span class="line">hello-world   latest    feb5d9fea6a5   2 months ago   13.3kB</span><br><span class="line">centos        latest    5d0da3dc9764   2 months ago   231MB</span><br></pre></td></tr></table></figure>
+
+<p>运行测试：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">docker run -d --name nginx01 -p 3334:80 nginx</span><br><span class="line"></span><br><span class="line">-d 后台运行</span><br><span class="line">--name 给容器命名</span><br><span class="line">-p 3334:80 将宿主机的端口3334映射到该容器的80端口</span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[root@iZ2zehf73q4a84x826efj3Z ~]# docker run -d --name nginx01 -p 3334:80 nginx</span><br><span class="line">docker: Error response from daemon: Conflict. The container name &quot;/nginx01&quot; is already in use by container &quot;5e6a2887b23790c6b1744c767c01753ba31970c34688a09d81944d16ddda6880&quot;. You have to remove (or rename) that container to be able to reuse that name.</span><br><span class="line">See &#x27;docker run --help&#x27;.</span><br></pre></td></tr></table></figure>
+
+<p>运行结果：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[root@iZ2zehf73q4a84x826efj3Z ~]# curl localhost:3334</span><br><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">&lt;title&gt;Welcome to nginx!&lt;/title&gt;</span><br><span class="line">&lt;style&gt;</span><br><span class="line">html &#123; color-scheme: light dark; &#125;</span><br><span class="line">body &#123; width: 35em; margin: 0 auto;</span><br><span class="line">font-family: Tahoma, Verdana, Arial, sans-serif; &#125;</span><br><span class="line">&lt;/style&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">&lt;h1&gt;Welcome to nginx!&lt;/h1&gt;</span><br><span class="line">&lt;p&gt;If you see this page, the nginx web server is successfully installed and</span><br><span class="line">working. Further configuration is required.&lt;/p&gt;</span><br><span class="line"></span><br><span class="line">&lt;p&gt;For online documentation and support please refer to</span><br><span class="line">&lt;a href=&quot;http://nginx.org/&quot;&gt;nginx.org&lt;/a&gt;.&lt;br/&gt;</span><br><span class="line">Commercial support is available at</span><br><span class="line">&lt;a href=&quot;http://nginx.com/&quot;&gt;nginx.com&lt;/a&gt;.&lt;/p&gt;</span><br><span class="line"></span><br><span class="line">&lt;p&gt;&lt;em&gt;Thank you for using nginx.&lt;/em&gt;&lt;/p&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+
+<p>端口暴露</p>
+<p><img src="https://note.youdao.com/yws/api/personal/file/4D93B833F0A04B5393A6C4B7041C6A61?method=download&shareKey=5238f81968c64581a11be423006d8b13"></p>
+<p>进入容器，自定义配置文件：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[root@iZwz99sm8v95sckz8bd2c4Z ~]# docker exec -it nginx01 /bin/bash</span><br><span class="line">root@20c896637ff5:/# whereis nginx</span><br><span class="line">nginx: /usr/sbin/nginx /usr/lib/nginx /etc/nginx /usr/share/nginx</span><br><span class="line">root@20c896637ff5:/# cd /etc/nginx</span><br><span class="line">root@20c896637ff5:/etc/nginx# ls</span><br><span class="line">conf.d	fastcgi_params	koi-utf  koi-win  mime.types  modules  nginx.conf  scgi_params	uwsgi_params  win-utf</span><br><span class="line">root@20c896637ff5:/# cd /etc/nginx</span><br><span class="line">root@20c896637ff5:/etc/nginx# ls</span><br><span class="line">conf.d	fastcgi_params	koi-utf  koi-win  mime.types  modules  nginx.conf  scgi_params	uwsgi_params  win-utf</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<h3>Docker安装部署tomcat</h3>
+
+<p>安装tomcat：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">docker run -d -p 3335:8080 --name tomcat01 tomcat</span><br></pre></td></tr></table></figure>
+
+
+
+<p>部署：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[root@iZ2zehf73q4a84x826efj3Z ~]# curl localhost:3335</span><br><span class="line">&lt;!doctype html&gt;&lt;html lang=&quot;en&quot;&gt;&lt;head&gt;&lt;title&gt;HTTP Status 404 – Not Found&lt;/title&gt;&lt;style type=&quot;text/css&quot;&gt;body &#123;font-family:Tahoma,Arial,sans-serif;&#125; h1, h2, h3, b &#123;color:white;background-color:#525D76;&#125; h1 &#123;font-size:22px;&#125; h2 &#123;font-size:16px;&#125; h3 &#123;font-size:14px;&#125; p &#123;font-size:12px;&#125; a &#123;color:black;&#125; .line &#123;height:1px;background-color:#525D76;border:none;&#125;&lt;/style&gt;&lt;/head&gt;&lt;body&gt;&lt;h1&gt;HTTP Status 404 – Not Found&lt;/h1&gt;&lt;hr class=&quot;line&quot; /&gt;&lt;p&gt;&lt;b&gt;Type&lt;/b&gt; Status Report&lt;/p&gt;&lt;p&gt;&lt;b&gt;Description&lt;/b&gt; The origin server did not find a current representation for the target resource or is not willing to disclose that one exists.&lt;/p&gt;&lt;hr class=&quot;line&quot; /&gt;&lt;h3&gt;Apache Tomcat/10.0.13&lt;/h3&gt;&lt;/body&gt;&lt;/html&gt;[root@iZ2zehf73q4a84x826efj3Z</span><br></pre></td></tr></table></figure>
+
+<p>进入容器：</p>
+<p>1.容器中的命令是少</p>
+<p>2.阿里云镜像默认下载的是最小的镜像，保证最小的运行环境。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[root@iZ2zehf73q4a84x826efj3Z ~]#  docker exec -it tomcat01 /bin/bash</span><br><span class="line">root@eab3e7c6930c:/usr/local/tomcat# ls -a</span><br><span class="line">.   BUILDING.txt     LICENSE  README.md      RUNNING.txt  conf	logs		temp	 webapps.dist</span><br><span class="line">..  CONTRIBUTING.md  NOTICE   RELEASE-NOTES  bin	  lib	native-jni-lib	webapps  work</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>如果每次都要进入容器是不是十分麻烦，我要是可以在容器外部提供一个映射路径，webapps ,我们在外部放置项目，就自动同步到内部就好了!</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[root@iZ2zehf73q4a84x826efj3Z ~]#  docker exec -it tomcat01 /bin/bash</span><br><span class="line">root@eab3e7c6930c:/usr/local/tomcat# ls -a</span><br><span class="line">.   BUILDING.txt     LICENSE  README.md      RUNNING.txt  conf	logs		temp	 webapps.dist</span><br><span class="line">..  CONTRIBUTING.md  NOTICE   RELEASE-NOTES  bin	  lib	native-jni-lib	webapps  work</span><br><span class="line">root@eab3e7c6930c:/usr/local/tomcat# cp -r webapps.dist/* webapps</span><br><span class="line">root@eab3e7c6930c:/usr/local/tomcat# cd webapps</span><br><span class="line">root@eab3e7c6930c:/usr/local/tomcat/webapps# ls -a</span><br><span class="line">.  ..  ROOT  docs  examples  host-manager  manager</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<h3>ElasticSearch部署</h3>
+
+
+
+<p>添加 ’-e ES_JAVA_OPTS=”-Xms128m -Xmx512m” ‘ 配置ElasticSearch的虚拟机占用的内存大小。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[root@iZ2zehf73q4a84x826efj3Z ~]# docker run -d --name elasticsearch -p 9200:9200 -p 9300:9300 -e &quot;discovery.type=single-node&quot; -e ES_JAVA_OPTS=&quot;-Xms128m -Xmx512m&quot; elasticsearch:7.6.2</span><br><span class="line">Unable to find image &#x27;elasticsearch:7.6.2&#x27; locally</span><br><span class="line">7.6.2: Pulling from library/elasticsearch</span><br><span class="line">ab5ef0e58194: Pull complete </span><br><span class="line">c4d1ca5c8a25: Pull complete </span><br><span class="line">941a3cc8e7b8: Pull complete </span><br><span class="line">43ec483d9618: Pull complete </span><br><span class="line">c486fd200684: Pull complete </span><br><span class="line">1b960df074b2: Pull complete </span><br><span class="line">1719d48d6823: Pull complete </span><br><span class="line">Digest: sha256:1b09dbd93085a1e7bca34830e77d2981521a7210e11f11eda997add1c12711fa</span><br><span class="line">Status: Downloaded newer image for elasticsearch:7.6.2</span><br><span class="line">db63035375e8c1617f53a055f1a905a9b581625f1c4d21cbd73300dcf91dd65c</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>操作系统层虚拟化</category>
+      </categories>
+      <tags>
+        <tag>应用容器引擎</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Hello World</title>
+    <url>/2021/12/09/hello-world/</url>
+    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+]]></content>
+  </entry>
+  <entry>
+    <title>docker镜像讲解</title>
+    <url>/2021/11/26/docker%E9%95%9C%E5%83%8F%E8%AE%B2%E8%A7%A3/</url>
+    <content><![CDATA[<h3>镜像是什么？</h3>
+
+<p>镜像是一种轻量级、可执行的独立软件包，用来打包软件运行环境和基于运行环境开发的软件，它包含运行某个软件所需的所有内容，包括代码、运行时、库、环境变量和配置文件。</p>
+<p>所有的应用，直接打包docker镜像，就可以直接跑起来。</p>
+<p><strong>如何得到镜像?</strong></p>
+<p>1、从远程仓库下载</p>
+<p>2、朋友拷贝给你</p>
+<p>3、自己制作一个镜像DockerFile</p>
+<hr>
+<h3>docker镜像加载原理?</h3>
+
+<p>UnionFS（联合文件系统）：Union文件系统（UnionFS）是一种分层、轻量级并且高性能的文件系统，它支持对文件系统的修改作为一次提交来一层层的叠加，同时可以将不同目录挂载到同一个虚拟文件系统下（unite several directories into a single virtual filesystem）。Union文件系统是Docker镜像的基础。镜像可以通过分层来进行继承，基于基础镜像（没有父镜像），可以制作各种具体的应用镜像。</p>
+<p>特性：一次同时加载多个文件系统，但从外面看起来，只能看到一个文件系统，联合加载会把文件系统及叠加起来，这样最终的文件系统包含所有底层的文件和目录</p>
+<p><strong>Dcoker镜像加载原理</strong></p>
+<p>docker的镜像实际上由一层一层的文件系统组成，这种层级的文件系统UnionFS。</p>
+<p>bootfs（boot file system）主要包含bootloader和kernel，bootloader主要是引导加载kernel，Linux刚启动时会加载bootfs文件系统，在Docker镜像的最底层是bootfs。这一层与我们电箱的Linux/Unix系统是一样的，包含boot加载器和内核。当boot加载完成之后整个内核就都在内存中了，此时内存的使用权已由bootfs转交给内核，此时系统也会卸载bootfs。</p>
+<p>rootfs（root file system），在bootfs之上。包含的就是典型Linux 系统中的 /dev，/proc，/bin，/etc 等标准目录和文件。rootfs就是各种不同的操作系统发行版，比如Ubuntu，Centos等</p>
+<p><img src="https://note.youdao.com/yws/api/personal/file/1307B9687AE348399E5612DB9F6E80CB?method=download&shareKey=1c8ae96c456a918eb40ae24e771f2c82"></p>
+<hr>
+<p>平时我们安装进虚拟机的CentOS都是好几个G，为什么Docker这里才231M？</p>
+<p>对于个精简的OS,rootfs可以很小，只需要包合最基本的命令，工具和程序库就可以了，因为底层直接用Host的kernel，自己只需要提供rootfs就可以了。由此可见对于不同的Linux发行版， boots基本是一致的， rootfs会有差別，因此不同的发行版可以公用bootfs。</p>
+<h3>分层理解</h3>
+
+<p>下载一个镜像，注意观察下载的日志输出，可以看到是一层层的在下载。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[root@iZ2zehf73q4a84x826efj3Z ~]# docker pull redis</span><br><span class="line">Using default tag: latest</span><br><span class="line">latest: Pulling from library/redis</span><br><span class="line">eff15d958d66: Already exists </span><br><span class="line">1aca8391092b: Pull complete </span><br><span class="line">06e460b3ba1b: Pull complete </span><br><span class="line">def49df025c0: Pull complete </span><br><span class="line">646c72a19e83: Pull complete </span><br><span class="line">db2c789841df: Pull complete </span><br><span class="line">Digest: sha256:619af14d3a95c30759a1978da1b2ce375504f1af70ff9eea2a8e35febc45d747</span><br><span class="line">Status: Downloaded newer image for redis:latest</span><br><span class="line">docker.io/library/redis:latest</span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>为什么Docker镜像要采用这种分层的结构呢？</strong></p>
+<p>最大的好处，我觉得莫过于资源共享了！比如有多个镜像都从相同的Base镜像构建而来，那么宿主机只需在磁盘上保留一份base镜像，同时内存中也只需要加载一份base镜像，这样就可以为所有的容器服务了，而且镜像的每一层都可以被共享。</p>
+<p>通过docker image inspect 命令查看镜像分层</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[root@iZ2zehf73q4a84x826efj3Z ~]# docker image inspect redis:latest</span><br><span class="line">[</span><br><span class="line">    &#123;</span><br><span class="line">        &quot;Id&quot;: &quot;sha256:40c68ed3a4d246b2dd6e59d1b05513accbd2070efb746ec16848adc1b8e07fd4&quot;,</span><br><span class="line">        &quot;RepoTags&quot;: [</span><br><span class="line">            &quot;redis:latest&quot;</span><br><span class="line">        ],</span><br><span class="line">        &quot;RepoDigests&quot;: [</span><br><span class="line">            &quot;redis@sha256:619af14d3a95c30759a1978da1b2ce375504f1af70ff9eea2a8e35febc45d747&quot;</span><br><span class="line">        ],</span><br><span class="line">        &quot;Parent&quot;: &quot;&quot;,</span><br><span class="line">        &quot;Comment&quot;: &quot;&quot;,</span><br><span class="line">        &quot;Created&quot;: &quot;2021-11-17T23:55:32.992203883Z&quot;,</span><br><span class="line">        &quot;Container&quot;: &quot;204dce7042f7d9b9ddfe3166f1fb31ab9e6796e9f85a61add0d162fa1b2af1d5&quot;,</span><br><span class="line">        &quot;ContainerConfig&quot;: &#123;</span><br><span class="line">            &quot;Hostname&quot;: &quot;204dce7042f7&quot;,</span><br><span class="line">            &quot;Domainname&quot;: &quot;&quot;,</span><br><span class="line">            &quot;User&quot;: &quot;&quot;,</span><br><span class="line">            &quot;AttachStdin&quot;: false,</span><br><span class="line">            &quot;AttachStdout&quot;: false,</span><br><span class="line">            &quot;AttachStderr&quot;: false,</span><br><span class="line">            &quot;ExposedPorts&quot;: &#123;</span><br><span class="line">                &quot;6379/tcp&quot;: &#123;&#125;</span><br><span class="line">            &#125;,</span><br><span class="line">            &quot;Tty&quot;: false,</span><br><span class="line">            &quot;OpenStdin&quot;: false,</span><br><span class="line">            &quot;StdinOnce&quot;: false,</span><br><span class="line">            &quot;Env&quot;: [</span><br><span class="line">                &quot;PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin&quot;,</span><br><span class="line">                &quot;GOSU_VERSION=1.12&quot;,</span><br><span class="line">                &quot;REDIS_VERSION=6.2.6&quot;,</span><br><span class="line">                &quot;REDIS_DOWNLOAD_URL=http://download.redis.io/releases/redis-6.2.6.tar.gz&quot;,</span><br><span class="line">                &quot;REDIS_DOWNLOAD_SHA=5b2b8b7a50111ef395bf1c1d5be11e6e167ac018125055daa8b5c2317ae131ab&quot;</span><br><span class="line">            ],</span><br><span class="line">            &quot;Cmd&quot;: [</span><br><span class="line">                &quot;/bin/sh&quot;,</span><br><span class="line">                &quot;-c&quot;,</span><br><span class="line">                &quot;#(nop) &quot;,</span><br><span class="line">                &quot;CMD [\&quot;redis-server\&quot;]&quot;</span><br><span class="line">            ],</span><br><span class="line">            &quot;Image&quot;: &quot;sha256:f68fe14ac3ec56717680e0a1e8562ba7ec42aabcc9626615012304e2f18c5a84&quot;,</span><br><span class="line">            &quot;Volumes&quot;: &#123;</span><br><span class="line">                &quot;/data&quot;: &#123;&#125;</span><br><span class="line">            &#125;,</span><br><span class="line">            &quot;WorkingDir&quot;: &quot;/data&quot;,</span><br><span class="line">            &quot;Entrypoint&quot;: [</span><br><span class="line">                &quot;docker-entrypoint.sh&quot;</span><br><span class="line">            ],</span><br><span class="line">            &quot;OnBuild&quot;: null,</span><br><span class="line">            &quot;Labels&quot;: &#123;&#125;</span><br><span class="line">        &#125;,</span><br><span class="line">        &quot;DockerVersion&quot;: &quot;20.10.7&quot;,</span><br><span class="line">        &quot;Author&quot;: &quot;&quot;,</span><br><span class="line">        &quot;Config&quot;: &#123;</span><br><span class="line">            &quot;Hostname&quot;: &quot;&quot;,</span><br><span class="line">            &quot;Domainname&quot;: &quot;&quot;,</span><br><span class="line">            &quot;User&quot;: &quot;&quot;,</span><br><span class="line">            &quot;AttachStdin&quot;: false,</span><br><span class="line">            &quot;AttachStdout&quot;: false,</span><br><span class="line">            &quot;AttachStderr&quot;: false,</span><br><span class="line">            &quot;ExposedPorts&quot;: &#123;</span><br><span class="line">                &quot;6379/tcp&quot;: &#123;&#125;</span><br><span class="line">            &#125;,</span><br><span class="line">            &quot;Tty&quot;: false,</span><br><span class="line">            &quot;OpenStdin&quot;: false,</span><br><span class="line">            &quot;StdinOnce&quot;: false,</span><br><span class="line">            &quot;Env&quot;: [</span><br><span class="line">                &quot;PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin&quot;,</span><br><span class="line">                &quot;GOSU_VERSION=1.12&quot;,</span><br><span class="line">                &quot;REDIS_VERSION=6.2.6&quot;,</span><br><span class="line">                &quot;REDIS_DOWNLOAD_URL=http://download.redis.io/releases/redis-6.2.6.tar.gz&quot;,</span><br><span class="line">                &quot;REDIS_DOWNLOAD_SHA=5b2b8b7a50111ef395bf1c1d5be11e6e167ac018125055daa8b5c2317ae131ab&quot;</span><br><span class="line">            ],</span><br><span class="line">            &quot;Cmd&quot;: [</span><br><span class="line">                &quot;redis-server&quot;</span><br><span class="line">            ],</span><br><span class="line">            &quot;Image&quot;: &quot;sha256:f68fe14ac3ec56717680e0a1e8562ba7ec42aabcc9626615012304e2f18c5a84&quot;,</span><br><span class="line">            &quot;Volumes&quot;: &#123;</span><br><span class="line">                &quot;/data&quot;: &#123;&#125;</span><br><span class="line">            &#125;,</span><br><span class="line">            &quot;WorkingDir&quot;: &quot;/data&quot;,</span><br><span class="line">            &quot;Entrypoint&quot;: [</span><br><span class="line">                &quot;docker-entrypoint.sh&quot;</span><br><span class="line">            ],</span><br><span class="line">            &quot;OnBuild&quot;: null,</span><br><span class="line">            &quot;Labels&quot;: null</span><br><span class="line">        &#125;,</span><br><span class="line">        &quot;Architecture&quot;: &quot;amd64&quot;,</span><br><span class="line">        &quot;Os&quot;: &quot;linux&quot;,</span><br><span class="line">        &quot;Size&quot;: 112713219,</span><br><span class="line">        &quot;VirtualSize&quot;: 112713219,</span><br><span class="line">        &quot;GraphDriver&quot;: &#123;</span><br><span class="line">            &quot;Data&quot;: &#123;</span><br><span class="line">                &quot;LowerDir&quot;: &quot;/var/lib/docker/overlay2/d9b5012331ae6e0229e209c05974f75112c0664b54ddaf668c230305bc5da03f/diff:/var/lib/docker/overlay2/db033b72a011cce6f105380eb451e830af1957eaa554912616e3a5219645aaa3/diff:/var/lib/docker/overlay2/c0a78a2d75f7d78c0d3c60e2595c9d9d992ff6f43df2cbe0eb153dd1f40078e5/diff:/var/lib/docker/overlay2/036c1f2c75d27bd5fb6cf0d0f1be53f70db8c71d232208ba4caf07ad73f50688/diff:/var/lib/docker/overlay2/424d63f473c519666d9a417b16b3e6c7fc738994d8ca5fefdbdd60d6f7300314/diff&quot;,</span><br><span class="line">                &quot;MergedDir&quot;: &quot;/var/lib/docker/overlay2/286ff4e03fda0c04b962631eccf9ac9875f3e287b35afb042dd96bb7fe0b0868/merged&quot;,</span><br><span class="line">                &quot;UpperDir&quot;: &quot;/var/lib/docker/overlay2/286ff4e03fda0c04b962631eccf9ac9875f3e287b35afb042dd96bb7fe0b0868/diff&quot;,</span><br><span class="line">                &quot;WorkDir&quot;: &quot;/var/lib/docker/overlay2/286ff4e03fda0c04b962631eccf9ac9875f3e287b35afb042dd96bb7fe0b0868/work&quot;</span><br><span class="line">            &#125;,</span><br><span class="line">            &quot;Name&quot;: &quot;overlay2&quot;</span><br><span class="line">        &#125;,</span><br><span class="line">        &quot;RootFS&quot;: &#123;</span><br><span class="line">            &quot;Type&quot;: &quot;layers&quot;,</span><br><span class="line">            &quot;Layers&quot;: [</span><br><span class="line">                &quot;sha256:e1bbcf243d0e7387fbfe5116a485426f90d3ddeb0b1738dca4e3502b6743b325&quot;,</span><br><span class="line">                &quot;sha256:58e6a16139eebebf7f6f0cb15f9cb3c2a4553a062d2cbfd1a782925452ead433&quot;,</span><br><span class="line">                &quot;sha256:503a5c57d9786921c992b7b2216ae58f69dcf433eedb28719ddea3606b42ce26&quot;,</span><br><span class="line">                &quot;sha256:277199a0027e044f64ef3719a6d7c3842e99319d6e0261c3a5190249e55646cf&quot;,</span><br><span class="line">                &quot;sha256:d0d567a1257963b9655dfceaddc76203c8544fbf6c8672b372561a3c8a3143d4&quot;,</span><br><span class="line">                &quot;sha256:a7115aa098139866d7073846e4321bafb8d5ca0d0f907a3c9625f877311bee7c&quot;</span><br><span class="line">            ]</span><br><span class="line">        &#125;,</span><br><span class="line">        &quot;Metadata&quot;: &#123;</span><br><span class="line">            &quot;LastTagTime&quot;: &quot;0001-01-01T00:00:00Z&quot;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">]</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<p>所有的docker镜像都起始于一个基础镜像层，当进行修改或者增加新的内容时，就会在当前镜像层之上，创建新的镜像层。</p>
+<p>举一个简单的例子，加入基于Ubuntu Linux 16.04创建一个新的镜像，这就是新镜像的第一层；如果在该镜像中添加Python包，就会在基础镜像层之上穿件第二个镜像层；如果继续添加一个安全补丁，就会创建第三个镜像层。</p>
+<p>该镜像当前已经包含3个镜像层，如下图（这只是一个用于演示的很简单的例子）。</p>
+<p><img src="https://note.youdao.com/yws/api/personal/file/B81278B7BE294FE59B79A3119D32F936?method=download&shareKey=a232c536dfc3c0fa540121a13ced7264"></p>
+<p>在添加额外的镜像层的同时，镜像始终是保持当前所有镜像的组合，理解这一点非常重要。下图中举了一个简单的例子，每个镜像层包含3个文件，而镜像层包含了来自两镜像层的6个文件。</p>
+<p><img src="https://note.youdao.com/yws/api/personal/file/D10298C670354943AE55FBA54939536C?method=download&shareKey=37451b600b46ec72a65cd3be575a8c25"></p>
+<p>这种情况下，上层镜像层中的文件覆盖了底层镜像层中的文件。这样就使得文件的更新版本作为一个新的镜像层添加到镜像当中。</p>
+<p>Docker通过存储引擎（新版本采用快照机制）的方式来实心镜像层堆栈，并保证多镜像层对外展示为统一的文件系统。</p>
+<p>Linux 上可用的存储引擎有AUFS、Overlay2，Device Maper、Btrfs 以及 ZFS。顾名思义，没种存储引擎都基于Linux中对应的文件系统或者块设备技术，并且每种存储引擎都有其独有的性能特点。</p>
+<p>Docker在Windows上仅支持windowsfiler 一种存储引擎，该引擎基于NTFS文件系统之上实现了分层和CoW[1]。</p>
+<p>下图展示了与系统显示相同的三层镜像。所有镜像层堆叠并合并，对外提供统一的视图。</p>
+<p><img src="https://note.youdao.com/yws/api/personal/file/9EF5C321901F4235848CB7B618C97D92?method=download&shareKey=ded78a83edba3f39c590b8ce23d852e4"></p>
+<p>特点：</p>
+<p>Docker镜像都是只读的，当容器启动时，一个新的可写层被加载到镜像的顶部；</p>
+<p>这一层就是我们通常说的容器层，容器之下的都叫镜像层。你的所有操作都是基于容器层的。</p>
+<h3>commit镜像</h3>
+
+
+
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">docker commit 提交容器成为一个新的副本</span><br><span class="line"># 命令和git原理类似</span><br><span class="line"></span><br><span class="line">docker commit -m=&quot;描述信息&quot; -a=&quot;作者&quot; 容器id 目标镜像名:[TAG]</span><br></pre></td></tr></table></figure>
+
+
+
+<p><code># 1、启动一个默认的tomcatdocker run -d -p 8080:8080 tomcat</code></p>
+<p><code># 2、发现这个默认的tomcat 是没有webapps应用，官方的镜像默认webapps下面是没有文件的！docker exec -it 容器id</code></p>
+<p><code># 3、拷贝文件进去</code></p>
+<p><code># 4、将操作过的容器通过commit**为一个镜像！我们以后就使用我们修改过的镜像即可，这就是我们自己的一个修改的镜像。docker commit -m=&quot;描述信息&quot; -a=&quot;作者&quot; 容器id 目标镜像名:[TAG]docker commit -a=&quot;kuangshen&quot; -m=&quot;add webapps app&quot; 容器id tomcat02:1.0</code></p>
+<p>测试：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[root@iZ2zehf73q4a84x826efj3Z ~]# docker run -d -p 3338:8080 --name tomcat02 tomcat</span><br><span class="line">9288712b8207b74ab114594be71bea3bfbec8d8bc61309fec50918b0675b07c4</span><br><span class="line">[root@iZ2zehf73q4a84x826efj3Z ~]# docker exec -it tomcat01 /bin/bash</span><br><span class="line">Error response from daemon: Container eab3e7c6930ce129050fa4c0c31c80e07274824ef0724efe75c3ad72726bc43a is not running</span><br><span class="line"></span><br><span class="line">[root@iZ2zehf73q4a84x826efj3Z ~]# docker exec -it tomcat02 /bin/bash</span><br><span class="line">root@9288712b8207:/usr/local/tomcat# ls -a</span><br><span class="line">.   BUILDING.txt     LICENSE  README.md      RUNNING.txt  conf	logs		temp	 webapps.dist</span><br><span class="line">..  CONTRIBUTING.md  NOTICE   RELEASE-NOTES  bin	  lib	native-jni-lib	webapps  work</span><br><span class="line">root@9288712b8207:/usr/local/tomcat# cp -r webapps.dist/* webapps</span><br><span class="line">root@9288712b8207:/usr/local/tomcat# exit</span><br><span class="line">exit</span><br><span class="line"></span><br><span class="line">[root@iZ2zehf73q4a84x826efj3Z ~]# docker ps</span><br><span class="line">CONTAINER ID   IMAGE                 COMMAND             CREATED         STATUS         PORTS                    NAMES</span><br><span class="line">9288712b8207   tomcat                &quot;catalina.sh run&quot;   3 minutes ago   Up 3 minutes   0.0.0.0:3338-&gt;8080/tcp   tomcat02</span><br><span class="line">64a140e51289   portainer/portainer   &quot;/portainer&quot;        22 hours ago    Up 22 hours    0.0.0.0:8080-&gt;9000/tcp   elated_sinoussi</span><br><span class="line"></span><br><span class="line">[root@iZ2zehf73q4a84x826efj3Z ~]# docker commit -m &quot;aidou&quot; -a=&quot;idol&quot; 9288712b8207 tomcat02:1.0</span><br><span class="line">sha256:db3a847e5f0db7d23fec92867dc65e7c3fd6613f24fec772e49ea2cd049ccec2</span><br><span class="line"></span><br><span class="line">[root@iZ2zehf73q4a84x826efj3Z ~]# docker images</span><br><span class="line">REPOSITORY            TAG       IMAGE ID       CREATED          SIZE</span><br><span class="line">tomcat02              1.0       db3a847e5f0d   32 seconds ago   684MB</span><br><span class="line">tomcat                latest    904a98253fbf   8 days ago       680MB</span><br><span class="line">redis                 latest    40c68ed3a4d2   9 days ago       113MB</span><br><span class="line">nginx                 latest    ea335eea17ab   10 days ago      141MB</span><br><span class="line">mysql                 latest    b05128b000dd   10 days ago      516MB</span><br><span class="line">hello-world           latest    feb5d9fea6a5   2 months ago     13.3kB</span><br><span class="line">centos                latest    5d0da3dc9764   2 months ago     231MB</span><br><span class="line">portainer/portainer   latest    580c0e4e98b0   8 months ago     79.1MB</span><br><span class="line">elasticsearch         7.6.2     f29a1ee41030   20 months ago    791MB</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h3>容器数据卷</h3>
+
+<p>容器之间可以有一个数据共享的技术！Docker容器中产生的数据，同步到本地；</p>
+<p>这就是卷技术！目录的挂载，将我们容器内的目录，挂载到Linux上面。</p>
+<p><img src="https://note.youdao.com/yws/api/personal/file/8A81086469DB4291819C62E9811FB381?method=download&shareKey=f3d6553f448ca7d211583889a385076a"></p>
+<p>容器的持久化和同步操作，容器间也是可以数据共享的。</p>
+<hr>
+<p>直接使用命令挂载：</p>
+<p>docker run -it -v 主机目录:容器内目录  </p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[root@iZ2zehf73q4a84x826efj3Z home]# docker run -it -v /home/ceshi:/home centos /bin/bash</span><br><span class="line">[root@a4599043acd5 /]# exit</span><br><span class="line">exit</span><br><span class="line">[root@iZ2zehf73q4a84x826efj3Z home]# ls -a</span><br><span class="line">.  ..  ceshi  git  www</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<p>通过 docker inspect 容器id 查看</p>
+<p><img src="https://note.youdao.com/yws/api/personal/file/F86BCABCA0614CF49DAD990BCF89EC75?method=download&shareKey=0815a8d5b9d947fd8b3acbf342f6ab45"></p>
+<p>测试文件同步：</p>
+<p><img src="https://note.youdao.com/yws/api/personal/file/A306829C22334FF182C2441E825C4637?method=download&shareKey=3f1fc0f72a230c42195a8c43afcc226a"></p>
+<p><strong>安装Mysql</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># 获取mysql镜像</span><br><span class="line">➜ ~ docker pull mysql:5.7</span><br><span class="line"># 运行容器,需要做数据挂载 #安装启动mysql，需要配置密码的，这是要注意点！</span><br><span class="line"># 参考官网hub</span><br><span class="line">docker run --name some-mysql -e MYSQL_ROOT_PASSWORD=my-secret-pw -d mysql:tag</span><br><span class="line">#启动我们得</span><br><span class="line">-d 后台运行</span><br><span class="line">-p 端口映射</span><br><span class="line">-v 卷挂载</span><br><span class="line">-e 环境配置</span><br><span class="line">-- name 容器名字</span><br><span class="line">➜ ~ docker run -d -p 3306:3306 -v /home/mysql/conf:/etc/mysql/conf.d -v /home/mysql/data:/var/lib/mysql </span><br><span class="line">-e MYSQL_ROOT_PASSWORD=123456 --name mysql01 mysql:5.7</span><br><span class="line"># 启动成功之后，我们在本地使用sqlyog来测试一下</span><br><span class="line"># sqlyog-连接到服务器的3306--和容器内的3306映射</span><br><span class="line"># 在本地测试创建一个数据库，查看一下我们映射的路径是否ok！</span><br></pre></td></tr></table></figure>
+
+<hr>
+<p><strong>具名的匿名挂载</strong></p>
+<p><strong>匿名挂载</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># 匿名挂载</span><br><span class="line">-v 容器内路径！</span><br><span class="line">[root@iZ2zehf73q4a84x826efj3Z ~]# docker run -d -P --name nginx02 -v /etc/nginx nginx</span><br><span class="line">6b70697fffc6cecfb67111da07e1325f2a41966c245799361562ed4faf626ea8</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># 查看所有的volume的情况</span><br><span class="line">[root@iZ2zehf73q4a84x826efj3Z ~]# docker volume ls</span><br><span class="line">DRIVER    VOLUME NAME</span><br><span class="line">local     77f1abfca66c0a501f1858e82b4666bf0ddb2f5b1edf34bf41eca571d1daaa0a</span><br><span class="line">local     7380d8b9c28d56dad8ac2873fc3db48233b5a6ff35de95482ff667dde76d41cd</span><br><span class="line">local     be93ac777e2c0e88ad041c815f60c1e15b392c08430baea7848cab3c4e37c4d5</span><br><span class="line">local     ec7ff3cdb9b4ab1a13bd3aba5ccef1d676f33ccde7ea80b24aabccae1fc12d75</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<hr>
+<p><strong>具名挂载</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#具名挂载</span><br><span class="line">[root@iZ2zehf73q4a84x826efj3Z ~]# docker run -d -P --name nginx03 -v juming-nginx:/etc/nginx nginx</span><br><span class="line">0a2e46d0f61e33b88c07f23a4b7d299eab7f94ae8a5df8ef6a6180d55ae478b2</span><br><span class="line"></span><br><span class="line">[root@iZ2zehf73q4a84x826efj3Z ~]# docker volume ls</span><br><span class="line">DRIVER    VOLUME NAME</span><br><span class="line">local     77f1abfca66c0a501f1858e82b4666bf0ddb2f5b1edf34bf41eca571d1daaa0a</span><br><span class="line">local     7380d8b9c28d56dad8ac2873fc3db48233b5a6ff35de95482ff667dde76d41cd</span><br><span class="line">local     be93ac777e2c0e88ad041c815f60c1e15b392c08430baea7848cab3c4e37c4d5</span><br><span class="line">local     ec7ff3cdb9b4ab1a13bd3aba5ccef1d676f33ccde7ea80b24aabccae1fc12d75</span><br><span class="line">local     juming-nginx</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<hr>
+<p>所有的docker容器内的卷，没有指定目录的情况下都是在</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">/var/lib/docker/volumes/xxx/_data</span><br></pre></td></tr></table></figure>
+
+
+
+<p>通过具名挂载可以方便的找到我们的 一个卷，大多数情况使用的是 具名挂载</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># 如何确定是具名挂载还是匿名挂载，还是指定路径挂载！</span><br><span class="line">-v 容器内路径          # 匿名挂载</span><br><span class="line">-v 卷名:容器内路径      # 具名挂载</span><br><span class="line">-v /宿主机路径:容器路径  # 指定路径挂载！</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># 通过 -v 容器内路径： ro rw 改变读写权限</span><br><span class="line">ro readonly  # 只读</span><br><span class="line">rw readwrite # 可读可写</span><br><span class="line"># 一旦设置了容器权限，容器对我们挂载出来的内容就有限定了！</span><br><span class="line">docker run -d -P --name nginx05 -v juming:/etc/nginx:ro nginx</span><br><span class="line">docker run -d -P --name nginx05 -v juming:/etc/nginx:rw nginx</span><br><span class="line"># ro 只要看到ro就说明这个路径只能通过宿主机来操作，容器内部是无法操作！</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>操作系统层虚拟化</category>
+      </categories>
+      <tags>
+        <tag>应用容器引擎</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>svn</title>
+    <url>/2021/11/19/svn/</url>
+    <content><![CDATA[<p>1.什么是svn<br>开源版本控制系统。svn git。</p>
+<p>版本控制系统</p>
+<p>2.主要功能<br>2.1目录的版本控制</p>
+<p>2.2真实的版本历史</p>
+]]></content>
+      <categories>
+        <category>算法</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>win10、win7环境下配置jdk、tomcat和maven</title>
+    <url>/2021/11/08/jdk/</url>
+    <content><![CDATA[<p>工具：<br>jdk1.8下载： <a href="https://www.oracle.com/java/technologies/downloads/">https://www.oracle.com/java/technologies/downloads/</a><br>tomcat下载：<a href="https://tomcat.apache.org/">https://tomcat.apache.org/</a><br>maven下载：<a href="http://maven.apache.org/download.cgi">http://maven.apache.org/download.cgi</a></p>
+<p><strong>一、配置jdk</strong><br>首先，找到环境变量        |     用win7做演示，win10同理<br><img src="https://img-blog.csdnimg.cn/4b40e6212dfd47c882b32b2675060d82.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBA6Im-6LGGaWRvbA==,size_19,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"><br>新建系统变量（以下都是）</p>
+<p>变量名：<code>JAVA_HOME</code><br>变量值：<code>D:\Program Files\Java\jdk1.8.0_221</code>（路径以自己的为主）</p>
+<p>变量名：<code>JRE_HOME</code><br>变量值：<code>D:\Program Files\Java\jre1.8.0_221 *</code>（路径以自己的为主）* </p>
+<p>变量名：CLASSPATH<br>变量值：<code>.;%JAVA_HOME%\lib;%JAVA_HOME%\lib\tool.jar;%TOMCAT_HOME%\lib\servlet-api.jar;</code> （jdk和tomcat都已经包含） </p>
+<p><strong>二、配置tomcat</strong></p>
+<p>变量名：<code>CATALINA_BASE</code><br>变量值：<code>E:\apache-tomcat-7.0.104</code></p>
+<p>变量名：<code>CATALINA_HOME</code><br>变量值：<code>E:\apache-tomcat-7.0.104</code></p>
+<p>变量名：<code>TOMCAT_HOME</code><br>变量值：<code>E:\apache-tomcat-7.0.104</code></p>
+<p>变量名：Path（无需新建）<br>变量值：<code>%JAVA_HOME%\bin</code><br><code>%JAVA_HOME%\jre\bin</code><br> <code>%CATALINA_HOME%\bin</code></p>
+<p>三、配置maven</p>
+<p>变量名：<code>MAVEN_HOME</code><br>变量值：<code>E:\apache-maven-3.6.3-bin\apache-maven-3.6.3</code></p>
+<p>变量名：Path（无需新建–新增）<br><code>%MAVEN_HOME%\bin</code></p>
+]]></content>
+      <categories>
+        <category>环境搭建</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+      </tags>
+  </entry>
+</search>
