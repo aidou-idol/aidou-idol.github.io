@@ -1,6 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>冒泡排序</title>
+    <url>/2021/11/08/aidou%E7%9A%84%E5%8D%9A%E5%AE%A2/</url>
+    <content><![CDATA[<h2>冒泡排序</h2>
+
+<p>相邻位比较，反序则互换<br>   /**<br>   * 冒泡排序<br>   * @param array<br>   */</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">bubbletSort</span><span class="params">(<span class="keyword">int</span>[] array)</span> </span>&#123;</span><br><span class="line">    <span class="comment">//[3]用最外层循环i控制比较的轮次，第i轮比较的时候，就有i个元素已经有序，则这i个元素是不需要进行排序的，而在整个长度为n的数组中，只要进行n-1轮排序即可</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; array.length-<span class="number">1</span>-<span class="number">1</span>; i++) &#123;</span><br><span class="line">      <span class="comment">//[2]内层循环控制两个相邻位下标的变化，在第i轮比较中，数组的后i个元素就是有序的，所以不需要参与比较</span></span><br><span class="line">      <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j+<span class="number">1</span> &lt;= array.length-<span class="number">1</span>-i; j++) &#123;</span><br><span class="line">        <span class="comment">//[1]相邻位比较，反序则互换</span></span><br><span class="line">        <span class="keyword">if</span>(array[j] &gt; array[j+<span class="number">1</span>]) &#123;</span><br><span class="line">          <span class="keyword">int</span> tmp = array[j];</span><br><span class="line">          array[j] = array[j+<span class="number">1</span>];</span><br><span class="line">          array[j+<span class="number">1</span>] = tmp;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span>[] array = <span class="keyword">new</span> <span class="keyword">int</span>[] &#123;<span class="number">7</span>,<span class="number">0</span>,<span class="number">1</span>,<span class="number">9</span>,<span class="number">2</span>,<span class="number">6</span>,<span class="number">3</span>,<span class="number">8</span>,<span class="number">5</span>,<span class="number">4</span>&#125;;</span><br><span class="line">    BubbleSort bs = <span class="keyword">new</span> BubbleSort();</span><br><span class="line">    bs.bubbletSort(array);</span><br><span class="line">    System.out.println(Arrays.toString(array));</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>算法</category>
+      </categories>
+  </entry>
+  <entry>
     <title>Docker可视化</title>
     <url>/2021/11/26/Docker%E5%8F%AF%E8%A7%86%E5%8C%96/</url>
     <content><![CDATA[<p>什么是portainer？</p>
@@ -23,17 +36,46 @@
       </tags>
   </entry>
   <entry>
-    <title>冒泡排序</title>
-    <url>/2021/11/08/aidou%E7%9A%84%E5%8D%9A%E5%AE%A2/</url>
-    <content><![CDATA[<h2>冒泡排序</h2>
+    <title>Xshell 7连接阿里云服务器</title>
+    <url>/2021/11/20/centos8%E8%BF%9E%E6%8E%A5Xshell7/</url>
+    <content><![CDATA[<h2>采用密钥对的方式连接Xshell 7</h2>
 
-<p>相邻位比较，反序则互换<br>   /**<br>   * 冒泡排序<br>   * @param array<br>   */</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">bubbletSort</span><span class="params">(<span class="keyword">int</span>[] array)</span> </span>&#123;</span><br><span class="line">    <span class="comment">//[3]用最外层循环i控制比较的轮次，第i轮比较的时候，就有i个元素已经有序，则这i个元素是不需要进行排序的，而在整个长度为n的数组中，只要进行n-1轮排序即可</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; array.length-<span class="number">1</span>-<span class="number">1</span>; i++) &#123;</span><br><span class="line">      <span class="comment">//[2]内层循环控制两个相邻位下标的变化，在第i轮比较中，数组的后i个元素就是有序的，所以不需要参与比较</span></span><br><span class="line">      <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j+<span class="number">1</span> &lt;= array.length-<span class="number">1</span>-i; j++) &#123;</span><br><span class="line">        <span class="comment">//[1]相邻位比较，反序则互换</span></span><br><span class="line">        <span class="keyword">if</span>(array[j] &gt; array[j+<span class="number">1</span>]) &#123;</span><br><span class="line">          <span class="keyword">int</span> tmp = array[j];</span><br><span class="line">          array[j] = array[j+<span class="number">1</span>];</span><br><span class="line">          array[j+<span class="number">1</span>] = tmp;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span>[] array = <span class="keyword">new</span> <span class="keyword">int</span>[] &#123;<span class="number">7</span>,<span class="number">0</span>,<span class="number">1</span>,<span class="number">9</span>,<span class="number">2</span>,<span class="number">6</span>,<span class="number">3</span>,<span class="number">8</span>,<span class="number">5</span>,<span class="number">4</span>&#125;;</span><br><span class="line">    BubbleSort bs = <span class="keyword">new</span> BubbleSort();</span><br><span class="line">    bs.bubbletSort(array);</span><br><span class="line">    System.out.println(Arrays.toString(array));</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>购买阿里云服务器，选用的是centos8系统。</p>
+<p>相关链接：</p>
+<p>xshell下载地址：<a href="https://www.xshellcn.com/">https://www.xshellcn.com/</a></p>
+<p>阿里云官网：<a href="https://www.aliyun.com/">https://www.aliyun.com/</a></p>
+<hr>
+<p>与xshell有关的：</p>
+<p>Xshell 是一个强大的安全终端模拟软件，它支持SSH1, SSH2, 以及Microsoft Windows 平台的TELNET 协议。Xshell 通过互联网到远程<a href="https://baike.baidu.com/item/%E4%B8%BB%E6%9C%BA">主机</a>的安全连接以及它创新性的设计和特色帮助用户在复杂的网络环境中享受他们的工作。Xshell可以在Windows界面下用来访问远端不同系统下的服务器，从而比较好的达到远程控制终端的目的。</p>
+<h2>连接方法</h2>
 
+<p>1 、进入阿里云控制台，找到<strong>密钥对</strong>选项，并创建密钥对。</p>
+<p><img src="https://note.youdao.com/yws/api/personal/file/2E772746172B41D796782E7AD92794F6?method=download&shareKey=492ac720c077719254207bbbcc248fe6" alt="sad"></p>
+<p>2、填写密钥对名称（随意即可）</p>
+<p><img src="https://note.youdao.com/yws/api/personal/file/4BF72F1C097547B69742720C91BD8A67?method=download&shareKey=1a0def19fe72bc91d8be76e933371dc4" alt="sad"></p>
+<p>3、点击确定后，会下载一个.pem结尾的文件</p>
+<p><img src="https://note.youdao.com/yws/api/personal/file/9C71479E49EA4BEA8B5114D2E06AB43B?method=download&shareKey=9ba7c7f367177f08d56fa7588b241bad" alt="sad"></p>
+<p>4、复制云服务器的ip地址到Xshell</p>
+<p><img src="https://note.youdao.com/yws/api/personal/file/23D62849F9AC4551ABB5487518391EA0?method=download&shareKey=ed4248fe4ab94df6366cf1c91e22d511" alt="sad"></p>
+<p>5、新建会话，复制云服务器的ip地址</p>
+<p><img src="https://note.youdao.com/yws/api/personal/file/C3597176D49541B8A15A0D25AD2D868E?method=download&shareKey=6243a6f4434ba28c6c988ffaf70253b8" alt="sad"></p>
+<p>6、用户身份验证，按步骤配置好后，进入设置</p>
+<p><img src="https://note.youdao.com/yws/api/personal/file/CC15661090E344A59F32F5431E0B35CC?method=download&shareKey=ee677346d2d8259ffe933fc742360e72" alt="sad"></p>
+<p>7.将testdemo.pem文件导入</p>
+<p><img src="https://note.youdao.com/yws/api/personal/file/64D8BB86BA0B4945A307B115776989CE?method=download&shareKey=85b3aacabf9a58d4354570c397bb7e1b" alt="sad"></p>
+<p>7、 连接，输入用户名：root</p>
+<p><img src="https://note.youdao.com/yws/api/personal/file/C67EABA0C3184FCA8130BAB1F443820A?method=download&shareKey=c71e28166ecc7291eba97a640321837f" alt="sad"></p>
+<p>8、输入密码，如果忘记了密码，去阿里云重置一下实例密码</p>
+<p><img src="https://note.youdao.com/yws/api/personal/file/9D2FC79E909245A4A5CF6F6D1AC2AC7E?method=download&shareKey=1ca5933b06ac05df6889d579c7613ee5" alt="sad"></p>
+<p>9、到这里就连接成功了</p>
+<p><img src="https://note.youdao.com/yws/api/personal/file/EBF4C9D635CE4F3C896E9E89385EE42C?method=download&shareKey=02f2c16bfbea241c1117e49d518a46bd" alt="sad"></p>
 ]]></content>
       <categories>
-        <category>算法</category>
+        <category>环境搭建</category>
       </categories>
+      <tags>
+        <tag>服务器</tag>
+      </tags>
   </entry>
   <entry>
     <title>Docker容器</title>
@@ -231,48 +273,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Xshell 7连接阿里云服务器</title>
-    <url>/2021/11/20/centos8%E8%BF%9E%E6%8E%A5Xshell7/</url>
-    <content><![CDATA[<h2>采用密钥对的方式连接Xshell 7</h2>
-
-<p>购买阿里云服务器，选用的是centos8系统。</p>
-<p>相关链接：</p>
-<p>xshell下载地址：<a href="https://www.xshellcn.com/">https://www.xshellcn.com/</a></p>
-<p>阿里云官网：<a href="https://www.aliyun.com/">https://www.aliyun.com/</a></p>
-<hr>
-<p>与xshell有关的：</p>
-<p>Xshell 是一个强大的安全终端模拟软件，它支持SSH1, SSH2, 以及Microsoft Windows 平台的TELNET 协议。Xshell 通过互联网到远程<a href="https://baike.baidu.com/item/%E4%B8%BB%E6%9C%BA">主机</a>的安全连接以及它创新性的设计和特色帮助用户在复杂的网络环境中享受他们的工作。Xshell可以在Windows界面下用来访问远端不同系统下的服务器，从而比较好的达到远程控制终端的目的。</p>
-<h2>连接方法</h2>
-
-<p>1 、进入阿里云控制台，找到<strong>密钥对</strong>选项，并创建密钥对。</p>
-<p><img src="https://note.youdao.com/yws/api/personal/file/2E772746172B41D796782E7AD92794F6?method=download&shareKey=492ac720c077719254207bbbcc248fe6" alt="sad"></p>
-<p>2、填写密钥对名称（随意即可）</p>
-<p><img src="https://note.youdao.com/yws/api/personal/file/4BF72F1C097547B69742720C91BD8A67?method=download&shareKey=1a0def19fe72bc91d8be76e933371dc4" alt="sad"></p>
-<p>3、点击确定后，会下载一个.pem结尾的文件</p>
-<p><img src="https://note.youdao.com/yws/api/personal/file/9C71479E49EA4BEA8B5114D2E06AB43B?method=download&shareKey=9ba7c7f367177f08d56fa7588b241bad" alt="sad"></p>
-<p>4、复制云服务器的ip地址到Xshell</p>
-<p><img src="https://note.youdao.com/yws/api/personal/file/23D62849F9AC4551ABB5487518391EA0?method=download&shareKey=ed4248fe4ab94df6366cf1c91e22d511" alt="sad"></p>
-<p>5、新建会话，复制云服务器的ip地址</p>
-<p><img src="https://note.youdao.com/yws/api/personal/file/C3597176D49541B8A15A0D25AD2D868E?method=download&shareKey=6243a6f4434ba28c6c988ffaf70253b8" alt="sad"></p>
-<p>6、用户身份验证，按步骤配置好后，进入设置</p>
-<p><img src="https://note.youdao.com/yws/api/personal/file/CC15661090E344A59F32F5431E0B35CC?method=download&shareKey=ee677346d2d8259ffe933fc742360e72" alt="sad"></p>
-<p>7.将testdemo.pem文件导入</p>
-<p><img src="https://note.youdao.com/yws/api/personal/file/64D8BB86BA0B4945A307B115776989CE?method=download&shareKey=85b3aacabf9a58d4354570c397bb7e1b" alt="sad"></p>
-<p>7、 连接，输入用户名：root</p>
-<p><img src="https://note.youdao.com/yws/api/personal/file/C67EABA0C3184FCA8130BAB1F443820A?method=download&shareKey=c71e28166ecc7291eba97a640321837f" alt="sad"></p>
-<p>8、输入密码，如果忘记了密码，去阿里云重置一下实例密码</p>
-<p><img src="https://note.youdao.com/yws/api/personal/file/9D2FC79E909245A4A5CF6F6D1AC2AC7E?method=download&shareKey=1ca5933b06ac05df6889d579c7613ee5" alt="sad"></p>
-<p>9、到这里就连接成功了</p>
-<p><img src="https://note.youdao.com/yws/api/personal/file/EBF4C9D635CE4F3C896E9E89385EE42C?method=download&shareKey=02f2c16bfbea241c1117e49d518a46bd" alt="sad"></p>
-]]></content>
-      <categories>
-        <category>环境搭建</category>
-      </categories>
-      <tags>
-        <tag>服务器</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Docker安装部署nginx、tomcat、ElasticSearch</title>
     <url>/2021/11/25/docker%E9%83%A8%E7%BD%B2nginx/</url>
     <content><![CDATA[<h3>Docker安装部署nginx</h3>
@@ -334,24 +334,6 @@
       <tags>
         <tag>应用容器引擎</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>Hello World</title>
-    <url>/2021/12/09/hello-world/</url>
-    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-]]></content>
   </entry>
   <entry>
     <title>docker镜像讲解</title>
@@ -496,6 +478,24 @@
       <tags>
         <tag>Java</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>Hello World</title>
+    <url>/2021/12/09/hello-world/</url>
+    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+]]></content>
   </entry>
   <entry>
     <title>svn</title>
