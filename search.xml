@@ -1,6 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>冒泡排序</title>
+    <url>/2021/11/08/aidou%E7%9A%84%E5%8D%9A%E5%AE%A2/</url>
+    <content><![CDATA[<h2>冒泡排序</h2>
+
+<p>相邻位比较，反序则互换<br>   /**<br>   * 冒泡排序<br>   * @param array<br>   */</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">bubbletSort</span><span class="params">(<span class="keyword">int</span>[] array)</span> </span>&#123;</span><br><span class="line">    <span class="comment">//[3]用最外层循环i控制比较的轮次，第i轮比较的时候，就有i个元素已经有序，则这i个元素是不需要进行排序的，而在整个长度为n的数组中，只要进行n-1轮排序即可</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; array.length-<span class="number">1</span>-<span class="number">1</span>; i++) &#123;</span><br><span class="line">      <span class="comment">//[2]内层循环控制两个相邻位下标的变化，在第i轮比较中，数组的后i个元素就是有序的，所以不需要参与比较</span></span><br><span class="line">      <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j+<span class="number">1</span> &lt;= array.length-<span class="number">1</span>-i; j++) &#123;</span><br><span class="line">        <span class="comment">//[1]相邻位比较，反序则互换</span></span><br><span class="line">        <span class="keyword">if</span>(array[j] &gt; array[j+<span class="number">1</span>]) &#123;</span><br><span class="line">          <span class="keyword">int</span> tmp = array[j];</span><br><span class="line">          array[j] = array[j+<span class="number">1</span>];</span><br><span class="line">          array[j+<span class="number">1</span>] = tmp;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span>[] array = <span class="keyword">new</span> <span class="keyword">int</span>[] &#123;<span class="number">7</span>,<span class="number">0</span>,<span class="number">1</span>,<span class="number">9</span>,<span class="number">2</span>,<span class="number">6</span>,<span class="number">3</span>,<span class="number">8</span>,<span class="number">5</span>,<span class="number">4</span>&#125;;</span><br><span class="line">    BubbleSort bs = <span class="keyword">new</span> BubbleSort();</span><br><span class="line">    bs.bubbletSort(array);</span><br><span class="line">    System.out.println(Arrays.toString(array));</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>算法</category>
+      </categories>
+  </entry>
+  <entry>
     <title>Xshell 7连接阿里云服务器</title>
     <url>/2021/11/20/centos8%E8%BF%9E%E6%8E%A5Xshell7/</url>
     <content><![CDATA[<h2>采用密钥对的方式连接Xshell 7</h2>
@@ -63,19 +76,6 @@
       <tags>
         <tag>应用容器引擎</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>冒泡排序</title>
-    <url>/2021/11/08/aidou%E7%9A%84%E5%8D%9A%E5%AE%A2/</url>
-    <content><![CDATA[<h2>冒泡排序</h2>
-
-<p>相邻位比较，反序则互换<br>   /**<br>   * 冒泡排序<br>   * @param array<br>   */</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">bubbletSort</span><span class="params">(<span class="keyword">int</span>[] array)</span> </span>&#123;</span><br><span class="line">    <span class="comment">//[3]用最外层循环i控制比较的轮次，第i轮比较的时候，就有i个元素已经有序，则这i个元素是不需要进行排序的，而在整个长度为n的数组中，只要进行n-1轮排序即可</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; array.length-<span class="number">1</span>-<span class="number">1</span>; i++) &#123;</span><br><span class="line">      <span class="comment">//[2]内层循环控制两个相邻位下标的变化，在第i轮比较中，数组的后i个元素就是有序的，所以不需要参与比较</span></span><br><span class="line">      <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j+<span class="number">1</span> &lt;= array.length-<span class="number">1</span>-i; j++) &#123;</span><br><span class="line">        <span class="comment">//[1]相邻位比较，反序则互换</span></span><br><span class="line">        <span class="keyword">if</span>(array[j] &gt; array[j+<span class="number">1</span>]) &#123;</span><br><span class="line">          <span class="keyword">int</span> tmp = array[j];</span><br><span class="line">          array[j] = array[j+<span class="number">1</span>];</span><br><span class="line">          array[j+<span class="number">1</span>] = tmp;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span>[] array = <span class="keyword">new</span> <span class="keyword">int</span>[] &#123;<span class="number">7</span>,<span class="number">0</span>,<span class="number">1</span>,<span class="number">9</span>,<span class="number">2</span>,<span class="number">6</span>,<span class="number">3</span>,<span class="number">8</span>,<span class="number">5</span>,<span class="number">4</span>&#125;;</span><br><span class="line">    BubbleSort bs = <span class="keyword">new</span> BubbleSort();</span><br><span class="line">    bs.bubbletSort(array);</span><br><span class="line">    System.out.println(Arrays.toString(array));</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-]]></content>
-      <categories>
-        <category>算法</category>
-      </categories>
   </entry>
   <entry>
     <title>Docker容器</title>
@@ -456,18 +456,6 @@
       </tags>
   </entry>
   <entry>
-    <title>svn</title>
-    <url>/2021/11/19/svn/</url>
-    <content><![CDATA[<p>1.什么是svn<br>开源版本控制系统。svn git。</p>
-<p>版本控制系统</p>
-<p>2.主要功能<br>2.1目录的版本控制</p>
-<p>2.2真实的版本历史</p>
-]]></content>
-      <categories>
-        <category>算法</category>
-      </categories>
-  </entry>
-  <entry>
     <title>Hello World</title>
     <url>/2021/12/09/hello-world/</url>
     <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
@@ -508,5 +496,17 @@
       <tags>
         <tag>Java</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>svn</title>
+    <url>/2021/11/19/svn/</url>
+    <content><![CDATA[<p>1.什么是svn<br>开源版本控制系统。svn git。</p>
+<p>版本控制系统</p>
+<p>2.主要功能<br>2.1目录的版本控制</p>
+<p>2.2真实的版本历史</p>
+]]></content>
+      <categories>
+        <category>算法</category>
+      </categories>
   </entry>
 </search>
